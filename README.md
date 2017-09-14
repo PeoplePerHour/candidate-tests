@@ -3,7 +3,7 @@
 **Description**
 
 Create a simple database connection manager using an abstraction layer that could be implemented by any RDBMS.
-The sollution should be **Framework agnostic** and has PHP compatibility **`PHP>=7`**
+The solution should be **Framework Agnostic** and has PHP compatibility **`PHP>=7`**
 <br />
 
 ## Required Features
