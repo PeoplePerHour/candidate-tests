@@ -13,9 +13,9 @@ The sollution should be **Framework agnostic** and has PHP compatibility **`PHP>
 - Supports database transactions, if available by the RDBMS.
 
 ## Optional Features
-- Query Caching
+- Query caching
 - Pagination handling
-- Data Validation
+- Data validation
 
 ### Process
 
