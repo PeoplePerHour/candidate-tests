@@ -8,7 +8,7 @@ The sollution should be **Framework agnostic** and has PHP compatibility **`PHP>
 
 ## Required Features
 - Connect to a database
-- Allows all the CRUD operations (insert, update, delete, select)
+- Provide methods for every of the CRUD operations (eg: insert, update, delete, select)
 - Eliminating SQL injection
 - Supports database transactions, if available by the RDBMS.
 
