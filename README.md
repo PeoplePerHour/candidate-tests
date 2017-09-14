@@ -19,17 +19,24 @@ The sollution should be **Framework agnostic** and has PHP compatibility **`PHP>
 
 ### Process
 
-clone this repo<br>
+Clone this repo<br>
 `git clone git@github.com:PeoplePerHour/candidate-tests`
 <br>
+<br>
+
 Enter the created folder<br>
 `cd ./candidate-tests`<br>
+<br>
+
 Create a branch named after your fullname<br>
 `git checkout -b yourfullname`<br>
+<br>
+
 When you are done please commit your code and push your branch<br>
 `git add .`<br>
 `git commit -m 'Enter your commit comment here'`<br>
 `git push origin yourfullname`<br>
+<br>
 Send us a message that you have committed your code.
 
 ## Do your magic!
