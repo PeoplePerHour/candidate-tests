@@ -21,7 +21,7 @@ The sollution should be **Framework agnostic** and has PHP compatibility **`PHP>
 ### Process
 
 Clone this repo<br>
-`git clone git@github.com:PeoplePerHour/candidate-tests`
+`git clone git@github.com:PeoplePerHour/candidate-tests.git`
 <br>
 <br>
 
