@@ -16,6 +16,7 @@ The sollution should be **Framework agnostic** and has PHP compatibility **`PHP>
 - Query caching
 - Pagination handling
 - Data validation
+- Unit tests
 
 ### Process
 
