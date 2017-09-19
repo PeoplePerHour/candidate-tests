@@ -41,7 +41,7 @@ git push origin yourfullname
 `
 <br />
 <br />
-And then create a pull request from your repository `<your-github-username>/candidate-tests/` branch to `PeoplePerHour/candidate-tests/master` branch.
+And then create a pull request from your repository `<your-github-username>/candidate-tests` branch to `PeoplePerHour/candidate-tests/master` branch.
 <br />
 Just don't forget to send us a message that you have committed your code.
 
