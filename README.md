@@ -20,25 +20,29 @@ The solution should be **Framework Agnostic** and has PHP compatibility **`PHP>=
 
 ### Process
 
-Fork this repo, and clone it on your local environment
+Fork this repo, and clone it on your local environment <br />
 `git clone git@github.com:<your-github-username>/candidate-tests.git`
-<br>
-<br>
-Enter the created folder<br>
-`cd ./candidate-tests
-<br>
-<br>
-Create a branch named after your fullname<br>
+<br />
+<br />
+Enter the created folder<br />
+`cd ./candidate-tests`
+<br />
+<br />
+Create a branch named after your fullname <br/>
 `git checkout -b yourfullname`
-<br>
-<br>
-When you are done please commit your code and push your branch<br>
-`git add .`<br>
-`git commit -m 'Enter your commit comment here'`<br>
-`git push origin yourfullname`<br>
-<br>
+<br />
+<br />
+When you are done please commit your code and push your branch
+<br />
+`
+git add . 
+git commit -m 'Enter your commit comment here'
+git push origin yourfullname
+`
+<br />
+<br />
 And then create a pull request from your repository `<your-github-username>/candidate-tests.git` `<youtfullname>` branch to `PeoplePerHour/candidate-tests` `master` branch.
-<br>
+<br />
 Just don't forget to send us a message that you have committed your code.
 
 ## Do your magic!
