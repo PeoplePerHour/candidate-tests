@@ -45,6 +45,6 @@ And then create a pull request from your repository `<your-github-username>/cand
 <br />
 Just don't forget to send us a message that you have committed your code.
 
-** Note **: If you need any clarification, please create a new issue and we will respond asap.
+**Important Note**: If you need any clarification, please create a new issue and we will respond asap.
 
 ## Do your magic!
