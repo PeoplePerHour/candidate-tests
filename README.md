@@ -45,6 +45,13 @@ And then create a pull request from your repository `<your-github-username>/cand
 <br />
 Just don't forget to send us a message that you have committed your code.
 
+### Things to avoid
+- Long PRs, code must be as simpler as it could be.
+- Over-complicated
+- Over-engineered
+- Copy-pasting code from other libraries, without fully understanding what it does.
+- Not asking for clarification. If something is unclear please go ahead and ask us.
+
 **Important Note**: If you need any clarification, please create a new issue and we will respond asap.
 
 ## Do your magic!
