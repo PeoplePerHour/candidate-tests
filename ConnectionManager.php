@@ -8,20 +8,23 @@ class ConnectionManager
     /**
      * @var iDataBase
      */
-    private $db;
+    private $db, $cacheManager;
 
     /**
      * ConnectionManager constructor.
      * @param iDataBase $db
+     * @param CacheManager $cacheManager
      */
-    public function __construct(iDataBase $db)
+    public function __construct(iDataBase $db, CacheManager $cacheManager)
     {
         $this->db = $db;
+        $this->cacheManager = $cacheManager;
     }
 
     /**
      * @param $tableName
      * @param $selectColumns
+     * @param $conditions
      * @return bool
      */
     public function select($tableName, $selectColumns, $conditions)
@@ -30,15 +33,20 @@ class ConnectionManager
         $query = "SELECT {$parsedColumns}  FROM {$tableName} WHERE ";
         $conditionsParsed = [];
         $bindings = [];
-
+        $result = $this->getCachedQueryResult($tableName, $selectColumns, $conditions);
+        if($result!=null)
+        {
+            return $result;
+        }
         foreach ($conditions as $condition) {
             $placeHolderName = uniqid();
             $conditionsParsed[] = " {$condition['column']} {$condition['operator']} :{$placeHolderName}";
             $bindings[$placeHolderName] = $condition['value'];
         }
         $query .= implode(' AND ', $conditionsParsed);
-
-        return $this->db->execute($query, $bindings);
+        $result = $this->db->execute($query,$bindings);
+        $this->cacheManager->remember($tableName, $selectColumns, $conditions,$result);
+        return $result;
     }
 
 
@@ -127,7 +135,7 @@ class ConnectionManager
         if (!$this->db->supportsTransactions()) {
             $this->db->execute("BEGIN TRANSACTION;", []);
         }
-        throw new Exception("Transactions not supported by this RDMS");
+        throw new Exception("Transactions not supported by this RDMS ");
 
     }
 
@@ -152,5 +160,18 @@ class ConnectionManager
             $this->db->execute("ROLLBACK   ;", []);
         }
         throw new Exception("Transactions not supported by this RDMS");
+    }
+
+    /**
+     * @param $tableName
+     * @param $selectColumns
+     * @param $conditions
+     * @return mixed
+     */
+    public function getCachedQueryResult($tableName, $selectColumns, $conditions)
+    {
+        $cachedResult = $this->cacheManager->get($tableName, $selectColumns,$conditions);
+
+        return $cachedResult;
     }
 }

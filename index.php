@@ -7,11 +7,16 @@
  */
 include_once("ConnectionManager.php");
 include_once("DummyDataBase.php");
+include_once("CacheManager.php");
+include_once("FileCacheDriver.php");
+include_once("iCacheDriver.php");
 
 $db = new DummyDataBase();
-$cm = new ConnectionManager($db);
-echo json_encode($cm->delete('test',
+$fileCache= new FileCacheDriver();
+$cacheManager = new CacheManager($fileCache);
+$cm = new ConnectionManager($db,$cacheManager);
+echo json_encode($cm->select('test',["12"],
 
-    [["column" => "name", "operator" => "=", "value" => "jimi"]]
+    [["column" => "namee", "operator" => "=", "value" => "jimiu"]]
 )
 );

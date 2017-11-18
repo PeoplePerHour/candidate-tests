@@ -12,7 +12,9 @@ class DummyDataBase implements iDataBase
     public function execute($query, $bindings)
     {
         // TODO: Implement execute() method.
-        return $query;
+        return [
+            "cll" => "values"
+        ];
     }
 
     public function connect($query)
@@ -30,8 +32,8 @@ class DummyDataBase implements iDataBase
         // TODO: Implement endTransaction() method.
     }
 
-    public function supportsTransactions():bool
+    public function supportsTransactions(): bool
     {
-       return true;
+        return true;
     }
 }
