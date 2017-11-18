@@ -1,5 +1,6 @@
 <?php
 /**
+ * Simple cache driver that uses files created for testing
  * Created by PhpStorm.
  * User: gkalligeros
  * Date: 11/18/2017
@@ -22,8 +23,9 @@ class FileCacheDriver implements iCacheDriver
     }
 
     /**
-     * @param $key
-     * @param $expiration
+     * Retrieve the value with $key
+     * @param string $key
+     * @param int $expiration
      * @return mixed|null
      */
     public function get($key, $expiration)
@@ -36,14 +38,26 @@ class FileCacheDriver implements iCacheDriver
 
     }
 
+    /**
+     * Store the  given $value in file with name $key
+     * @param string $key
+     * @param string $value
+     * @return void
+     */
     public function store($key, $value)
     {
         $serializedData = serialize($value);
         $cacheFilename = $key;
 
         file_put_contents($this->cacheDir.DIRECTORY_SEPARATOR.$cacheFilename, $serializedData);
+
     }
 
+    /**
+     * Delete the file with name $key if exists
+     * @param $key
+     * @return mixed|void
+     */
     public function delete($key)
     {
 
@@ -56,6 +70,7 @@ class FileCacheDriver implements iCacheDriver
     }
 
     /**
+     * Returns tru if this key is in cached and is not expired
      * @param $key
      * @param $expiration
      * @return bool
@@ -82,8 +97,6 @@ class FileCacheDriver implements iCacheDriver
      */
     public function expirationTimeStamp($key, $expiration)
     {
-
-
 
         return filemtime($this->getCacheLocation($key)) + (1000 * $expiration);
     }

@@ -1,13 +1,17 @@
 <?php
 include_once("iDatabase.php");
-
-
+/**
+ * Created by PhpStorm.
+ * User: gkalligeros
+ * Date: 11/18/2017
+ * Time: 3:14 PM
+ * Main class connection manager depends upon an database abstraction and a CacheManager
+ *
+ */
 class ConnectionManager
 {
 
-    /**
-     * @var iDataBase
-     */
+
     private $db, $cacheManager;
 
     /**
@@ -18,13 +22,16 @@ class ConnectionManager
     public function __construct(iDataBase $db, CacheManager $cacheManager)
     {
         $this->db = $db;
+        $this->db->connect();
         $this->cacheManager = $cacheManager;
     }
 
     /**
-     * @param $tableName
-     * @param $selectColumns
-     * @param $conditions
+     * Get requested value from cache if it is available or
+     * Generate a select statement with bindings and pass it to database for execution  then get the result store it in cache and return it
+     * @param string $tableName
+     * @param array $selectColumns
+     * @param  array $conditions
      * @return bool
      */
     public function select($tableName, $selectColumns, $conditions)
@@ -34,8 +41,7 @@ class ConnectionManager
         $conditionsParsed = [];
         $bindings = [];
         $result = $this->getCachedQueryResult($tableName, $selectColumns, $conditions);
-        if($result!=null)
-        {
+        if ($result != null) {
             return $result;
         }
         foreach ($conditions as $condition) {
@@ -44,13 +50,14 @@ class ConnectionManager
             $bindings[$placeHolderName] = $condition['value'];
         }
         $query .= implode(' AND ', $conditionsParsed);
-        $result = $this->db->execute($query,$bindings);
-        $this->cacheManager->remember($tableName, $selectColumns, $conditions,$result);
+        $result = $this->db->execute($query, $bindings);
+        $this->cacheManager->remember($tableName, $selectColumns, $conditions, $result);
         return $result;
     }
 
 
     /**
+     * Generate an insert statement with bindings and pass it to database for execution
      * @param $tableName
      * @param $data
      * @return bool
@@ -75,6 +82,7 @@ class ConnectionManager
     }
 
     /**
+     * Generate an update statement with bindings and pass it to database for execution
      * @param $tableName
      * @param $data
      * @param $conditions
@@ -105,6 +113,7 @@ class ConnectionManager
     }
 
     /**
+     * Generate a delete statement with bindings and pass it to database for execution
      * @param $tableName
      * @param $conditions
      * @return mixed
@@ -128,6 +137,7 @@ class ConnectionManager
 
 
     /**
+     * Begins transaction if supported by db or throw exception
      * @throws Exception
      */
     public function beginTransaction()
@@ -140,6 +150,7 @@ class ConnectionManager
     }
 
     /**
+     * commits transaction if supported by db or throw exception
      * @throws Exception
      */
     public function commitTransaction()
@@ -152,6 +163,7 @@ class ConnectionManager
     }
 
     /**
+     *  Rollbacks transaction if supported by db or throw exception
      * @throws Exception
      */
     public function rollbackTransaction()
@@ -163,6 +175,7 @@ class ConnectionManager
     }
 
     /**
+     * Returns select query result if is available in cache
      * @param $tableName
      * @param $selectColumns
      * @param $conditions
@@ -170,7 +183,7 @@ class ConnectionManager
      */
     public function getCachedQueryResult($tableName, $selectColumns, $conditions)
     {
-        $cachedResult = $this->cacheManager->get($tableName, $selectColumns,$conditions);
+        $cachedResult = $this->cacheManager->get($tableName, $selectColumns, $conditions);
 
         return $cachedResult;
     }
