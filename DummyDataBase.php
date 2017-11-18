@@ -29,4 +29,9 @@ class DummyDataBase implements iDataBase
     {
         // TODO: Implement endTransaction() method.
     }
+
+    public function supportsTransactions():bool
+    {
+       return true;
+    }
 }
