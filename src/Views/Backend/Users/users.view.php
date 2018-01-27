@@ -78,7 +78,7 @@
 								<a href="<?= DOMAIN ?>"><span>Dashboard</span></a>
 								<i class="fa fa-angle-right"></i>
 								<i class="fa icon-users"></i>
-								<a href="<?= DOMAIN ?>/users"><span>Users</span></a>
+								<a href="<?= DOMAIN ?>/panel/users"><span>Users</span></a>
 								<i class="fa fa-angle-right"></i>
 								<i class="fa icon-pencil"></i>
 								<span>Edit user</span>
