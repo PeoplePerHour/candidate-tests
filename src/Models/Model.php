@@ -13,10 +13,15 @@
 			try
 			{
 				$this->_db = $db;
-				$this->cache = new \Memcache();
 
                 if(ENABLE_CACHE === true)
-                    $this->memCacheStatus = $this->cache->connect(MEMCACHE_SERVER, MEMCACHE_PORT) == false ? false : true;
+                {
+                    if(extension_loaded('memcache'))
+                    {
+                        $this->cache = new \Memcache();
+                        $this->memCacheStatus = $this->cache->connect(MEMCACHE_SERVER, MEMCACHE_PORT) == false ? false : true;
+                    }
+                }
 
 			}
 			catch (\Exception $e)
