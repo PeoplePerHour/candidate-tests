@@ -25,7 +25,7 @@ var Users = {
                 autoclose: true,
                 pickTime: false,
                 minView: 2,
-                maxView: 4,
+                maxView: 4
             });
         }
 
@@ -51,10 +51,7 @@ var Users = {
                         }
                     })
                 }
-            })
-			.on('change', '#filter_role, #filter_active', function(){
-            	$('#search_list').submit();
-        	});
+            });
 	}
 };
 
