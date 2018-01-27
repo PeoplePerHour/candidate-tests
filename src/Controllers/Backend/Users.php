@@ -52,7 +52,7 @@
 				if(isset($data['success']) && $data['success'] === false)
 				{
 					$this->_ci->flash->addMessage($data['type'], $data['message']);
-					return $response->withRedirect($_SERVER['HTTP_REFERER']);
+					return $response->withRedirect(DOMAIN.'/panel/users');
 				}
 
 				return $this->_renderView($request, $response, 'Backend/Users/users.view', $data);

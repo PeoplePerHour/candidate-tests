@@ -71,7 +71,7 @@
 						<ul class="page-breadcrumb">
 							<li>
 								<i class="fa icon-home"></i>
-								<a href="<?= DOMAIN ?>"><span>Dashboard</span></a>
+								<a href="<?= DOMAIN.'/panel' ?>"><span>Dashboard</span></a>
 								<i class="fa fa-angle-right"></i>
 								<i class="fa icon-users"></i>
 								<span>Users</span>

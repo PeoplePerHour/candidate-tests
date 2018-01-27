@@ -13,7 +13,7 @@
         {
             parent::__construct($name, $data, $dataName);
 
-            $pdo = new \PDO('mysql:host=localhost;dbname=PPHDemo;charset=utf8mb4;connect_timeout=15', 'root', 'AnteGeiaReMounia');
+            $pdo = new \PDO('mysql:host=localhost;dbname=PPHDemo;charset=utf8mb4;connect_timeout=15', '', '');
             $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
             $pdo->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC);
 
