@@ -2,12 +2,14 @@ var Users = {
 	
 	'init': function() {
 
-		$("#filter_active").select2({
-			allowClear: true,
-			width: null,
-			theme: 'bootstrap',
-			placeholder: 'Select active status'
-		});
+        $("#filter_active").select2({
+            allowClear: true,
+            width: null,
+            theme: 'bootstrap',
+            placeholder: 'Select active status'
+        }).on('change', this, function(){
+            $('#search_list').submit();
+        });
 
 		if($("#gender").length > 0)
 		{
