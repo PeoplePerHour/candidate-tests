@@ -80,12 +80,6 @@
 			{
 				$data = (array) $request->getParsedBody();
 
-				if(!empty($data['birthdate']))
-				{
-					$birthdate = \DateTime::createFromFormat('d-m-Y', $data['birthdate']);
-					$data['birthdate'] = $birthdate->format('Y-m-d');
-				}
-
 				$sanitizedData = array(
 					'id' => Helper::sanitizeInput($data['id'], 'INT'),
 					'user_name' => Helper::sanitizeInput($data['user_name'], 'STRING'),
@@ -121,12 +115,6 @@
 			try
 			{
 				$data = (array) $request->getParsedBody();
-
-				if(isset($data['birthdate']) && !empty($data['birthdate']))
-				{
-					$birthdate = \DateTime::createFromFormat('d-m-Y', $data['birthdate']);
-					$data['birthdate'] = $birthdate->format('Y-m-d');
-				}
 
 				$sanitizedData = array(
 					'user_name' => Helper::sanitizeInput($data['user_name'], 'STRING'),

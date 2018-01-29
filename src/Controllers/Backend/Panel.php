@@ -16,7 +16,6 @@
             try
             {
                 parent::__construct($ci);
-				$_SESSION['current_page'] = 'dashboard';
                 $this->__model = new PanelModel($this->_ci->db);
             }
             catch(\Exception $e)
@@ -44,14 +43,7 @@
 		{
 			try
 			{
-                try
-                {
-                    return $this->_renderView($request, $response, 'Backend/login', array());
-                }
-                catch(\Exception $e)
-                {
-                    throw $e;
-                }
+                return $this->_renderView($request, $response, 'Backend/login', array());
 			}
 			catch(\Exception $e)
 			{
