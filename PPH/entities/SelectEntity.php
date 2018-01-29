@@ -208,17 +208,13 @@ class SelectEntity
             $result = $this->cache->load($statement);
             if ($result) {
                 return \json_decode($result, $asArray);
-            } else {
-                $prepared = $this->db->prepare($statement);
-                $prepared->execute($this->andWhereBindValues);
-                $result = $prepared->fetchAll($fetchStyle);
-                $this->cache->store($statement, $result);
             }
-        } else {
-            $prepared = $this->db->prepare($statement);
-            $prepared->execute($this->andWhereBindValues);
-            $result = $prepared->fetchAll($fetchStyle);
         }
+
+        $prepared = $this->db->prepare($statement);
+        $prepared->execute($this->andWhereBindValues);
+        $result = $prepared->fetchAll($fetchStyle);
+        ! $this->cache->enabled() ?: $this->cache->store($statement, $result);
 
         return ($result != null) ? $result : null;
     }
@@ -240,17 +236,13 @@ class SelectEntity
             $result = $this->cache->load($statement);
             if ($result) {
                 return \json_decode($result, $asArray);
-            } else {
-                $prepared = $this->db->prepare($statement);
-                $prepared->execute($this->andWhereBindValues);
-                $result = $prepared->fetch($fetchStyle);
-                $this->cache->store($statement, $result);
             }
-        } else {
-            $prepared = $this->db->prepare($statement);
-            $prepared->execute($this->andWhereBindValues);
-            $result = $prepared->fetch($fetchStyle);
         }
+
+        $prepared = $this->db->prepare($statement);
+        $prepared->execute($this->andWhereBindValues);
+        $result = $prepared->fetch($fetchStyle);
+        ! $this->cache->enabled() ?: $this->cache->store($statement, $result);
 
         return ($result != null) ? $result : null;
     }

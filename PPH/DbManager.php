@@ -32,11 +32,13 @@ class DbManager
 
     /**
      * DbManager constructor.
+     *
+     * @param bool $enableCache
      */
-    public function __construct()
+    public function __construct($enableCache = true)
     {
         $this->db    = (new DbConnector())->getPdoConnection();
-        $this->cache = new CacheManager();
+        $this->cache = new CacheManager($enableCache);
     }
 
     /**
