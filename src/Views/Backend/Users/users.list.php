@@ -16,6 +16,20 @@
             <?php endforeach; ?>
         <?php endforeach; ?>
     <?php endif; ?>
+    <form name="filters">
+        <div>
+            <input type="text" placeholder="Search Username..." value="<?= isset($_SESSION['Users']['nav']['filter_user']) ? $_SESSION['Users']['nav']['filter_user'] : '' ?>" name="filter_user">
+        </div>
+
+        <div>
+            <select name="filter_active">
+                <option value="">Select Status</option>
+                <option value="1" <?= isset($_SESSION['Users']['nav']['filter_active']) && $_SESSION['Users']['nav']['filter_active'] == 1   ? 'selected' : ''?>>Active</option>
+                <option value="0" <?= isset($_SESSION['Users']['nav']['filter_active']) && $_SESSION['Users']['nav']['filter_active'] == '0' ? 'selected' : ''?>>Not Active</option>
+            </select>
+        </div>
+        <button id="submit_filters" type="submit" >Submit filters</button>
+    </form>
     <form id="users_list_form" name="users_list_form" method="POST" action='<?= DOMAIN ?>/panel/users/delete-user'>
         <input type="hidden" name="csrf_name" value="<?php echo $csrf_name; ?>">
         <input type="hidden" name="csrf_value" value="<?php echo $csrf_value; ?>">
@@ -69,8 +83,8 @@
                                 </a>
                             </td>
                             <td><?= $user->username() ?></td>
-                            <td><?= $user->in_backend() == 1 ? 'YES' : 'NO' ?></td>
                             <td><?= $user->is_enabled() == 1 ? 'YES' : 'NO' ?></td>
+                            <td><?= $user->in_backend() == 1 ? 'YES' : 'NO' ?></td>
                         </tr>
                     <?php endforeach; ?>
                 <?php endif; ?>

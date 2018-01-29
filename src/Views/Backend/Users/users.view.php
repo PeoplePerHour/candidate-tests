@@ -76,14 +76,14 @@
                 <div class="col-xs-6 col-sm-3 col-lg-3">
                     <div class="form-group">
                         <label class="" for="in_backend">In Backend</label><p />
-                        <input id="in_backend" name="in_backend" type="checkbox" class="make-switch" data-size="normal" data-on-text="Yes" data-off-text="No" data-on-color="success" data-off-color="danger" <?= $data['user']->in_backend() == 1 ? 'checked' : '' ?>>
+                        <input id="in_backend" name="in_backend" type="checkbox" <?= $data['user']->in_backend() == 1 ? 'checked' : '' ?>>
                     </div>
                 </div>
 
                 <div class="col-xs-6 col-sm-3 col-lg-3">
                     <div class="form-group">
                         <label class="" for="is_enabled">Active</label><p />
-                        <input id="is_enabled" name="is_enabled" type="checkbox" class="make-switch" data-size="normal" data-on-text="Yes" data-off-text="No" data-on-color="success" data-off-color="danger" <?= $data['user']->is_enabled() == 1 ? 'checked' : '' ?>>
+                        <input id="is_enabled" name="is_enabled" type="checkbox"  <?= $data['user']->is_enabled() == 1 ? 'checked' : '' ?>>
                     </div>
                 </div>
             </div>
