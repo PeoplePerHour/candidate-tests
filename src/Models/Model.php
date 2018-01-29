@@ -14,15 +14,11 @@
 			{
 				$this->_db = $db;
 
-                if(ENABLE_CACHE === true)
+                if(ENABLE_CACHE === true && extension_loaded('memcache'))
                 {
-                    if(extension_loaded('memcache'))
-                    {
-                        $this->cache = new \Memcache();
-                        $this->memCacheStatus = $this->cache->connect(MEMCACHE_SERVER, MEMCACHE_PORT) == false ? false : true;
-                    }
+                    $this->cache = new \Memcache();
+                    $this->memCacheStatus = $this->cache->connect(MEMCACHE_SERVER, MEMCACHE_PORT) == false ? false : true;
                 }
-
 			}
 			catch (\Exception $e)
 			{
@@ -39,7 +35,7 @@
 					'message' => 'Cache cleared!'
 				);
 
-				if(!$this->cache->flush())
+				if(empty($this->cache) || !$this->cache->flush())
 				{
 					$response['type'] = 'danger';
 					$response['message'] = 'Cache not cleared! Check the error logs for more info!';
