@@ -55,7 +55,7 @@
         /**
          * Constructor
          */
-        abstract public function __construct($dbDriver, $host, $port, $username, $password, $dbName, $unixSocket, $charset);
+        abstract public function __construct($config);
 
         /**
          * @return bool

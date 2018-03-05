@@ -9,17 +9,18 @@
     {
         /**
          * Constructor
+         * @param array config
          */
-        public function __construct($dbDriver, $host, $port, $username, $password, $dbName, $unixSocket, $charset)
+        public function __construct($config)
         {
-            $this->dbDriver = $dbDriver;
-            $this->host = $host;
-            $this->port = $port;
-            $this->username = $username;
-            $this->password = $password;
-            $this->dbName = $dbName;
-            $this->unixSocket = $unixSocket;
-            $this->charset = $charset;
+            $this->dbDriver = array_key_exists('driver', $config) ? $config['driver'] : NULL;
+            $this->host = array_key_exists('host', $config) ? $config['host'] : NULL;
+            $this->port = array_key_exists('port', $config) ? $config['port'] : NULL;
+            $this->username = array_key_exists('username', $config) ? $config['username'] : NULL;
+            $this->password = array_key_exists('password', $config) ? $config['password'] : NULL;
+            $this->dbName = array_key_exists('dbname', $config) ? $config['dbname'] : NULL;
+            $this->unixSocket = array_key_exists('unix_socket', $config) ? $config['unix_socket'] : NULL;
+            $this->charset = array_key_exists('charset', $config) ? $config['charset'] : NULL;
         }
 
         /**
