@@ -1,11 +1,12 @@
 <?php
 
-    include_once 'database.class.php';
+    include_once 'mysqldatabase.class.php';
 
     /* parse config data */
     $config = parse_ini_file('config.ini');
 
-    $db = new Database($config['driver'], $config['host'], $config['port'], $config['username'], $config['password'], $config['dbname'], $config['unix_socket'], $config['charset']);
+    $db = new MysqlDatabase($config['driver'], $config['host'], $config['port'], $config['username'], $config['password'], $config['dbname'], $config['unix_socket'], $config['charset']);
+    //$this->db = new PDO ("dblib:host=$this->hostname:$this->port;dbname=$this->dbname", "$this->username", "$this->pwd");
 
     /* Connect to database */
     $db->openConnection();

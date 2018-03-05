@@ -21,21 +21,21 @@
         /**
          * Connect database
          */
-        abstract protected function openConnection();
+        abstract public function openConnection();
 
         /**
          * Returns rows from the database based on the conditions
          * @param string name of the table
          * @param array select, where, order_by, limit and return_type conditions
          */
-        abstract protected function selectData($table, $conditions = array());
+        abstract public function selectData($table, $conditions = array());
 
         /**
          * Insert data into the database
          * @param string name of the table
          * @param array the data for inserting into the table
          */
-        abstract protected function insertData($table,$data);
+        abstract public function insertData($table,$data);
         
         /**
          * Update data into the database
@@ -43,29 +43,19 @@
          * @param array the data for updating into the table
          * @param array where condition on updating data
          */
-        abstract protected function updateData($table, $data, $conditions);
+        abstract public function updateData($table, $data, $conditions);
 
         /**
          * Delete data from the database
          * @param string name of the table
          * @param array where condition on deleting data
          */
-        abstract protected function deleteData($table, $conditions);
+        abstract public function deleteData($table, $conditions);
 
         /**
          * Constructor
          */
-        protected function __construct($dbDriver, $host, $port, $username, $password, $dbName, $unixSocket, $charset)
-        {
-            $this->dbDriver = $dbDriver;
-            $this->host = $host;
-            $this->port = $port;
-            $this->username = $username;
-            $this->password = $password;
-            $this->dbName = $dbName;
-            $this->unixSocket = $unixSocket;
-            $this->charset = $charset;
-        }
+        abstract public function __construct($dbDriver, $host, $port, $username, $password, $dbName, $unixSocket, $charset);
 
         /**
          * @return bool
