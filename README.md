@@ -34,11 +34,11 @@ Create a branch named after your fullname <br/>
 <br />
 When you are done please commit your code and push your branch
 <br />
-`
+```
 git add . 
 git commit -m 'Enter your commit comment here'
 git push origin yourfullname
-`
+```
 <br />
 <br />
 And then create a pull request from your repository `<your-github-username>/candidate-tests` branch to `PeoplePerHour/candidate-tests/master` branch.
