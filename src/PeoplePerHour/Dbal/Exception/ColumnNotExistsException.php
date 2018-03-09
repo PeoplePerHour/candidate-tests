@@ -1,6 +1,6 @@
 <?php
 
-namespace PeoplPerHour\Dbal\PeoplePerHour\Dbal\Exception;
+namespace PeoplPerHour\Dbal\Exception;
 
 use PeoplePerHour\Dbal\Exception\DatabaseException;
 

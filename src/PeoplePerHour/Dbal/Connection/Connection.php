@@ -70,9 +70,9 @@ interface Connection {
    * @param array $values Array of values to insert into table
    * @param array|null $columns The ordered column names to insert values into
    *
-   * @return int The number of rows inserted
+   * @return Query The generated query object
    */
-  function insert(string $table, array $values, array $columns = null): int;
+  function insert(string $table, array $values, array $columns = null): Query;
 
   /**
    * Execute an update operation
@@ -83,7 +83,7 @@ interface Connection {
    * @param Expression|null $where Expression to use as WHERE predicate
    * @param Join[]|null $joins Array of Join objects
    *
-   * @return int The number of rows updated
+   * @return Query The generated query object
    *
    * @see Expression
    * @see Join
@@ -91,7 +91,7 @@ interface Connection {
    * @throws DatabaseException
    * @throws JoinNotSupportedOnUpdateException If the database does not support joins in update operations
    */
-  function update(string $table, array $values, array $columns, Expression $where = null, array $joins = null): int;
+  function update(string $table, array $values, array $columns, Expression $where = null, array $joins = null): Query;
 
   /**
    * Execute a delete operation
@@ -103,12 +103,12 @@ interface Connection {
    * @see Expression
    * @see Join
    *
-   * @return int The number of rows deleted
+   * @return Query The generated query object
    *
    * @throws DatabaseException
    * @throws JoinsNotSupportedOnDeleteException
    */
-  function delete(string $table, Expression $criteria = null, array $joins = null): int;
+  function delete(string $table, Expression $criteria = null, array $joins = null): Query;
 
   /**
    * Fetch rows from database
@@ -121,7 +121,7 @@ interface Connection {
    * @param int|null $firstResult Pagination offset
    * @param int|null $maxResults Pagination limit
    *
-   * @return array The rows returned
+   * @return Query The generated query object
    */
   function select(
     array $selections,
@@ -131,7 +131,7 @@ interface Connection {
     array $orders = null,
     int $firstResult = null,
     int $maxResults = null
-  ): array;
+  ): Query;
 
   /**
    * @param string $table The table name

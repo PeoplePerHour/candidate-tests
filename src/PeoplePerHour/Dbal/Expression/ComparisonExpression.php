@@ -1,6 +1,6 @@
 <?php
 
-namespace PeoplPerHour\Dbal\PeoplePerHour\Dbal\Expression;
+namespace PeoplPerHour\Dbal\Expression;
 
 use PeoplePerHour\Dbal\Expression\Expression;
 

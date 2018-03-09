@@ -2,29 +2,47 @@
 
 namespace PeoplePerHour\Dbal;
 
+use PeoplePerHour\Dbal\Cache\AbstractCache;
 use PeoplePerHour\Dbal\Connection\Connection;
 use PeoplePerHour\Dbal\Connection\ConnectionConfiguration;
 use PeoplePerHour\Dbal\Driver\Driver;
 use PeoplePerHour\Dbal\Exception\DatabaseException;
 use PeoplePerHour\Dbal\Exception\JoinNotSupportedOnUpdateException;
 use PeoplePerHour\Dbal\Exception\JoinsNotSupportedOnDeleteException;
-use PeoplePerHour\Dbal\Expression\Condition;
 use PeoplePerHour\Dbal\Expression\Expression;
 use PeoplePerHour\Dbal\Expression\Join;
 use PeoplePerHour\Dbal\Expression\Order;
-use PeoplPerHour\Dbal\PeoplePerHour\Dbal\Exception\ColumnNotExistsException;
-use PeoplPerHour\Dbal\PeoplePerHour\Dbal\Exception\TableNotExistsException;
+use PeoplPerHour\Dbal\Exception\ColumnNotExistsException;
+use PeoplPerHour\Dbal\Exception\TableNotExistsException;
 
 class ConnectionManager {
-  /** @var Driver $driver */
+  /**
+   * @var Driver $driver
+   */
   private $driver;
 
-  /** @var Connection $connection */
+  /**
+   * @var Connection $connection
+   */
   private $connection;
 
-  public function __construct(Driver $driver, ConnectionConfiguration $config) {
+  /**
+   * @var AbstractCache
+   */
+  private $cache;
+
+  /**
+   * @var bool
+   */
+  private $cacheEnabled = false;
+
+  public function __construct(Driver $driver, ConnectionConfiguration $config, AbstractCache $cache = null, $cacheExpires = 3600) {
     $this->driver = $driver;
     $this->connection = $this->driver->connect($config);
+    if (!is_null($cache)) {
+      $this->cache = $cache;
+      $this->cache->setExpires($cacheExpires);
+    }
   }
 
   /**
@@ -50,7 +68,7 @@ class ConnectionManager {
       $this->sanitizeInput($value);
     }
 
-    return $this->connection->insert($table, $values, $columns);
+    return $this->connection->insert($table, $values, $columns)->execute();
   }
 
   /**
@@ -82,7 +100,7 @@ class ConnectionManager {
     if ($joins) {
       $this->checkJoins($joins);
     }
-    return $this->connection->update($table, $values, $columns, $where, $joins);
+    return $this->connection->update($table, $values, $columns, $where, $joins)->execute();
   }
 
   /**
@@ -100,7 +118,7 @@ class ConnectionManager {
     if ($joins) {
       $this->checkJoins($joins);
     }
-    return $this->connection->delete($table, $where, $joins);
+    return $this->connection->delete($table, $where, $joins)->execute();
   }
 
   /**
@@ -112,7 +130,7 @@ class ConnectionManager {
    * @param int|null $firstResult Pagination offset
    * @param int|null $maxResults Pagination limit
    *
-   * @return array
+   * @return array The rows returned
    *
    * @throws TableNotExistsException
    */
@@ -130,7 +148,20 @@ class ConnectionManager {
     $this->checkJoins($joins);
     $this->checkOrders($orders);
 
-    return $this->connection->select($selections, $from, $where, $joins, $orders, $firstResult, $maxResults);
+    $query = $this->connection->select($selections, $from, $where, $joins, $orders, $firstResult, $maxResults);
+    $hash = $query->getQueryHash();
+    if ($this->cacheEnabled && !is_null($this->cache)) {
+      if ($this->cache->has($hash) && !$this->cache->hasExpired($hash)) {
+        $result = $this->cache->get($hash);
+      } else {
+        $result = $query->execute();
+        $this->cache->set($hash, $result);
+      }
+    } else {
+      $result = $query->execute();
+    }
+
+    return $result;
   }
 
   /**
@@ -145,6 +176,34 @@ class ConnectionManager {
    */
   public function setDriver(Driver $driver): void {
     $this->driver = $driver;
+  }
+
+  /**
+   * @return AbstractCache
+   */
+  public function getCache(): AbstractCache {
+    return $this->cache;
+  }
+
+  /**
+   * @param AbstractCache $cache
+   */
+  public function setCache(AbstractCache $cache): void {
+    $this->cache = $cache;
+  }
+
+  /**
+   * @return bool
+   */
+  public function isCacheEnabled(): bool {
+    return $this->cacheEnabled;
+  }
+
+  /**
+   * @param bool $cacheEnabled
+   */
+  public function setCacheEnabled(bool $cacheEnabled): void {
+    $this->cacheEnabled = $cacheEnabled;
   }
 
   public function getDriverName(): string {
