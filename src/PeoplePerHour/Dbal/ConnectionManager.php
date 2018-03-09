@@ -14,7 +14,6 @@ use PeoplePerHour\Dbal\Expression\Join;
 use PeoplePerHour\Dbal\Expression\Order;
 use PeoplPerHour\Dbal\PeoplePerHour\Dbal\Exception\ColumnNotExistsException;
 use PeoplPerHour\Dbal\PeoplePerHour\Dbal\Exception\TableNotExistsException;
-use PeoplPerHour\Dbal\PeoplePerHour\Dbal\Expression\ComparisonExpression;
 
 class ConnectionManager {
   /** @var Driver $driver */
@@ -110,19 +109,28 @@ class ConnectionManager {
    * @param Expression|null $where Expression to use as WHERE predicate
    * @param Join[]|null $joins Array of Join objects (if needed)
    * @param Order[]|null $orders Array of Order objects (if needed)
+   * @param int|null $firstResult Pagination offset
+   * @param int|null $maxResults Pagination limit
    *
    * @return array
    *
-   * @throws DatabaseException
    * @throws TableNotExistsException
    */
-  public function select(array $selections, $from, Expression $where = null, array $joins = null, array $orders = null): array {
+  public function select(
+    array $selections,
+    $from,
+    Expression $where = null,
+    array $joins = null,
+    array $orders = null,
+    int $firstResult = null,
+    int $maxResults = null
+  ): array {
     $this->checkTablesExist(is_array($from) ? $from : [$from]);
     $this->checkFrom($from);
     $this->checkJoins($joins);
     $this->checkOrders($orders);
 
-    return $this->connection->select($selections, $from, $where, $joins, $orders);
+    return $this->connection->select($selections, $from, $where, $joins, $orders, $firstResult, $maxResults);
   }
 
   /**
@@ -189,7 +197,7 @@ class ConnectionManager {
   }
 
   private function checkFrom($from): bool {
-    if (is_null($from) || (!is_string($from) && !is_array($from))) {
+    if (is_null($from) || !is_string($from) && !is_array($from)) {
       throw new \InvalidArgumentException("Parameter `from` is required and must be a string or an array of strings");
     }
     foreach ($from as $fromItem) {

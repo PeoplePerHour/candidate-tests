@@ -118,11 +118,20 @@ interface Connection {
    * @param Expression|null $criteria
    * @param Join[]|null $joins
    * @param Order[]|null $orders
+   * @param int|null $firstResult Pagination offset
+   * @param int|null $maxResults Pagination limit
    *
-   * @return array
-   *
+   * @return array The rows returned
    */
-  function select(array $selections, $from, Expression $criteria = null, array $joins = null, array $orders = null): array;
+  function select(
+    array $selections,
+    $from,
+    Expression $criteria = null,
+    array $joins = null,
+    array $orders = null,
+    int $firstResult = null,
+    int $maxResults = null
+  ): array;
 
   /**
    * @param string $table The table name
