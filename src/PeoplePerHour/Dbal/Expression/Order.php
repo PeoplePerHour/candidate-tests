@@ -19,11 +19,8 @@ class Order {
    * @param string $direction
    */
   public function __construct(string $column, string $direction) {
-    if (!in_array($direction, [self::ASC, self::DESC])) {
-      throw new \InvalidArgumentException("Parameter `direction` must be one of ASC, DESC");
-    }
-    $this->column = $column;
-    $this->direction = $direction;
+    $this->setColumn($column);
+    $this->setDirection($direction);
   }
 
   /**
@@ -54,6 +51,9 @@ class Order {
    * @return Order
    */
   public function setDirection(string $direction): Order {
+    if (!in_array($direction, [self::ASC, self::DESC])) {
+      throw new \InvalidArgumentException("Parameter `direction` must be one of ASC, DESC");
+    }
     $this->direction = $direction;
     return $this;
   }

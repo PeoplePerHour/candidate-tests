@@ -30,6 +30,13 @@ interface Driver {
   public function getDatabase(Connection $conn);
 
   /**
+   * Get the database host
+   *
+   * @return string The database host
+   */
+  public function getDatabaseHost(): string;
+
+  /**
    * @param mixed $value The user input value
    *
    * @return mixed The sanitized value

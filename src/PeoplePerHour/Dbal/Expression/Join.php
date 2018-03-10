@@ -2,8 +2,8 @@
 
 namespace PeoplePerHour\Dbal\Expression;
 
-use PeoplPerHour\Dbal\PeoplePerHour\Dbal\Expression\ComparisonExpression;
-use PeoplPerHour\Dbal\PeoplePerHour\Dbal\Expression\LogicalExpression;
+use PeoplPerHour\Dbal\Expression\ComparisonExpression;
+use PeoplPerHour\Dbal\Expression\LogicalExpression;
 
 class Join {
   const JOIN_TYPE_INNER = 1;
@@ -25,12 +25,6 @@ class Join {
    * @param LogicalExpression|ComparisonExpression $on
    */
   public function __construct(string $joinWith, $on, int $type = self::JOIN_TYPE_INNER) {
-    if (!in_array($type, [self::JOIN_TYPE_INNER, self::JOIN_TYPE_LEFT])) {
-      throw new \InvalidArgumentException('Join type should be one of JOIN_TYPE_INNER/JOIN_TYPE_LEFT');
-    }
-    if (!($on instanceof ComparisonExpression) && !($on instanceof LogicalExpression)) {
-      throw new \InvalidArgumentException('On parameter should be of type ' . LogicalExpression::class . ' or ' . ComparisonExpression::class);
-    }
     $this->setType($type);
     $this->setJoinWith($joinWith);
     $this->setOn($on);
@@ -48,6 +42,9 @@ class Join {
    * @return Join
    */
   public function setType(int $type): Join {
+    if (!in_array($type, [self::JOIN_TYPE_INNER, self::JOIN_TYPE_LEFT])) {
+      throw new \InvalidArgumentException('Join type should be one of JOIN_TYPE_INNER/JOIN_TYPE_LEFT');
+    }
     $this->type = $type;
     return $this;
   }
@@ -81,10 +78,8 @@ class Join {
    * @return Join
    */
   public function setOn($on): Join {
-    foreach ($on as $expression) { // @TODO
-      if (!($expression instanceof Expression)) {
-        throw new \InvalidArgumentException("The `on` parameter must be an Expression object");
-      }
+    if (!($on instanceof ComparisonExpression) && !($on instanceof LogicalExpression)) {
+      throw new \InvalidArgumentException("The `on` parameter must be an Expression object");
     }
     $this->on = $on;
     return $this;

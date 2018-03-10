@@ -40,7 +40,7 @@ class ComparisonExpression implements Expression {
    *
    * @throws \InvalidArgumentException
    */
-  public function __construct(string $field, string $type, mixed $value) {
+  public function __construct(string $field, string $type, $value) {
     $this->field = $field;
     if (!in_array($type, self::getAvailableOperationTypes())) {
       throw new \InvalidArgumentException('Comparison operation type must be one of: ' . implode(', ', self::getAvailableOperationTypes()));

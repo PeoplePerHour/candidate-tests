@@ -5,7 +5,7 @@ namespace PeoplePerHour\Dbal;
 use PeoplePerHour\Dbal\Cache\AbstractCache;
 use PeoplePerHour\Dbal\Connection\Connection;
 use PeoplePerHour\Dbal\Connection\ConnectionConfiguration;
-use PeoplePerHour\Dbal\Driver\Driver;
+use PeoplePerHour\Dbal\Driver\AbstractDriver;
 use PeoplePerHour\Dbal\Exception\DatabaseException;
 use PeoplePerHour\Dbal\Exception\JoinNotSupportedOnUpdateException;
 use PeoplePerHour\Dbal\Exception\JoinsNotSupportedOnDeleteException;
@@ -17,7 +17,7 @@ use PeoplPerHour\Dbal\Exception\TableNotExistsException;
 
 class ConnectionManager {
   /**
-   * @var Driver $driver
+   * @var AbstractDriver $driver
    */
   private $driver;
 
@@ -36,7 +36,7 @@ class ConnectionManager {
    */
   private $cacheEnabled = false;
 
-  public function __construct(Driver $driver, ConnectionConfiguration $config, AbstractCache $cache = null, $cacheExpires = 3600) {
+  public function __construct(AbstractDriver $driver, ConnectionConfiguration $config, AbstractCache $cache = null, $cacheExpires = 3600) {
     $this->driver = $driver;
     $this->connection = $this->driver->connect($config);
     if (!is_null($cache)) {
@@ -165,16 +165,23 @@ class ConnectionManager {
   }
 
   /**
-   * @return Driver
+   * @return Connection
    */
-  public function getDriver(): Driver {
+  public function getConnection(): Connection {
+    return $this->connection;
+  }
+
+  /**
+   * @return AbstractDriver
+   */
+  public function getDriver(): AbstractDriver {
     return $this->driver;
   }
 
   /**
-   * @param Driver $driver
+   * @param AbstractDriver $driver
    */
-  public function setDriver(Driver $driver): void {
+  public function setDriver(AbstractDriver $driver): void {
     $this->driver = $driver;
   }
 

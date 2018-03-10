@@ -23,11 +23,15 @@ abstract class AbstractDriver implements Driver {
   }
 
   public function getName() {
-    return __CLASS__;
+    return get_class($this);
   }
 
   public function getDatabase(Connection $conn) {
     return $this->config->getDatabase();
+  }
+
+  public function getDatabaseHost(): string {
+    return $this->config->getHost();
   }
 
   public abstract function doConnect(): Connection;
