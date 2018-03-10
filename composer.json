@@ -1,0 +1,13 @@
+{
+  "autoload": {
+    "classmap": [
+      "src/"
+    ]
+  },
+  "scripts": {
+    "test": "./vendor/bin/phpunit --testdox test/"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^7"
+  }
+}
