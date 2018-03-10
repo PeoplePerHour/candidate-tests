@@ -25,26 +25,26 @@ class ConnectionTest extends TestCase {
                              ->setMethods(['getConfig'])
                              ->getMockForAbstractClass();
 
-    $config = new ConnectionConfiguration('localhost', 'coreforin', 'dev', 'dev');
+    $config = new ConnectionConfiguration('localhost', 'testDb', 'dev', 'dev');
     $this->mockDriver->method('getConfig')
                      ->willReturnReference($config);
 
     $this->db = new ConnectionManager($this->mockDriver, $config);
   }
 
-  public function testGetDriverName(): void {
+  public function testCorrectDriverName(): void {
     $this->assertEquals('MockDriver', $this->db->getDriverName());
   }
 
-  public function testGetDatabase(): void {
-    $this->assertEquals('coreforin', $this->db->getDatabaseName());
+  public function testCorrectDatabaseName(): void {
+    $this->assertEquals('testDb', $this->db->getDatabaseName());
   }
 
-  public function testGetDriver(): void {
+  public function testCorrectDriverReference(): void {
     $this->assertSame($this->mockDriver, $this->db->getDriver());
   }
 
-  public function testGetDatabaseHost(): void {
+  public function testCorrectDatabaseHost(): void {
     $this->assertEquals('localhost', $this->db->getDriver()->getDatabaseHost());
   }
 }
