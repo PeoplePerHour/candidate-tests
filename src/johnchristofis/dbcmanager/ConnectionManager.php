@@ -131,8 +131,8 @@ class ConnectionManager implements DatabaseAbstractionLayer
         return $this->driver->insert($table, $data);
     }
 
-    public function update(){
-        return $this->driver->update();
+    public function update($table, array $data, array $conditions){
+        return $this->driver->update($table, $data, $conditions);
     }
 
     public function delete(){
