@@ -94,7 +94,7 @@ class MysqlDriver implements DatabaseAbstractionLayer
 
         $insert = "INSERT INTO $table ";
         if (empty($data)){
-            throw new Exception('Conditions can not be empty.');
+            throw new Exception('Data can not be empty.');
         }
 
         $columns = ' ( ';
@@ -120,10 +120,54 @@ class MysqlDriver implements DatabaseAbstractionLayer
         return $statement->execute();
     }
 
-    public function update()
+    public function update($table, array $data, array $conditions = [])
     {
-        // TODO: Implement update() method.
-        echo  'update data';
+        $this->tableExists($table);
+        $this->columnsExists($table, array_keys($data));
+
+        $update = "UPDATE $table";
+        $set = ' SET ';
+
+        foreach ($data as $column => $value) {
+            $set .= "$column = :$column";
+            if(next( $data )){
+                $set .= ' , ';
+            }
+        }
+
+        if (!empty($conditions) && $this->columnsExists($table, array_keys($conditions))){
+
+            $where = ' WHERE ';
+            foreach ($conditions as $condition => $value) {
+
+                $where .= $condition." = :condition_$condition";
+
+                if(next( $conditions )){
+                    $where .= ' AND ';
+                }
+            }
+
+        }else{
+            $where = ' ';
+        }
+
+        echo $sql = $update.$set.$where;
+
+        $statement = $this->pdo->prepare($sql);
+
+        foreach ($data as $column => $value) {
+            var_dump($column);
+            var_dump($value);
+            $statement->bindValue(":$column", $value);
+        }
+
+        foreach ($conditions as $column => $value) {
+            var_dump($column);
+            var_dump($value);
+            $statement->bindValue(":condition_$column", $value);
+        }
+
+        return $statement->execute();
     }
 
     public function delete()
@@ -155,7 +199,6 @@ class MysqlDriver implements DatabaseAbstractionLayer
 
     public function columnsExists($table, $columns)
     {
-
         $statement = $this->pdo->prepare("DESCRIBE $table");
         $statement->execute();
         $tableColumns = $statement->fetchAll(PDO::FETCH_COLUMN);
@@ -167,7 +210,7 @@ class MysqlDriver implements DatabaseAbstractionLayer
         }catch (PDOException $e){
             echo $e->getMessage();
         }
-
+        return true;
     }
 
     public function beginTransaction()
