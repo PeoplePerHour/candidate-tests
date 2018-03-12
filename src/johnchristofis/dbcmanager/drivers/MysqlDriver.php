@@ -85,7 +85,13 @@ class MysqlDriver implements DatabaseAbstractionLayer
         return $result;
     }
 
-
+    /**
+     * Insert record on database table
+     * @param $table
+     * @param $data
+     * @return bool
+     * @throws Exception
+     */
     public function insert($table, $data)
     {
 
@@ -120,6 +126,13 @@ class MysqlDriver implements DatabaseAbstractionLayer
         return $statement->execute();
     }
 
+    /**
+     * Update record in a database table
+     * @param $table
+     * @param array $data
+     * @param array $conditions
+     * @return bool
+     */
     public function update($table, array $data, array $conditions = [])
     {
         $this->tableExists($table);
@@ -151,30 +164,58 @@ class MysqlDriver implements DatabaseAbstractionLayer
             $where = ' ';
         }
 
-        echo $sql = $update.$set.$where;
+        $sql = $update.$set.$where;
 
         $statement = $this->pdo->prepare($sql);
 
         foreach ($data as $column => $value) {
-            var_dump($column);
-            var_dump($value);
             $statement->bindValue(":$column", $value);
         }
 
         foreach ($conditions as $column => $value) {
-            var_dump($column);
-            var_dump($value);
             $statement->bindValue(":condition_$column", $value);
         }
 
         return $statement->execute();
     }
 
-    public function delete()
+    /**
+     * Delete record from database table
+     * @param $table
+     * @param array $conditions
+     * @return bool
+     */
+    public function delete($table, array $conditions)
     {
-        // TODO: Implement delete() method.
-        echo  'delete data';
+        $this->tableExists($table);
+        $this->columnsExists($table, array_keys($conditions));
 
+        $delete = "DELETE FROM $table ";
+
+        if (!empty($conditions) && $this->columnsExists($table, array_keys($conditions))){
+
+            $where = ' WHERE ';
+            foreach ($conditions as $condition => $value) {
+
+                $where .= $condition." = :$condition";
+
+                if(next( $conditions )){
+                    $where .= ' AND ';
+                }
+            }
+
+        }else{
+            $where = ' ';
+        }
+
+        $sql = $delete.$where;
+
+        $statement = $this->pdo->prepare($sql);
+        foreach ($conditions as $column => $value) {
+            $statement->bindValue(":$column", $value);
+        }
+
+        return $statement->execute();
     }
 
     /**
@@ -186,6 +227,11 @@ class MysqlDriver implements DatabaseAbstractionLayer
     }
 
 
+    /**
+     * Check if database table is valid and exists
+     * @param $table
+     * @return bool
+     */
     public function tableExists($table)
     {
         try{
@@ -195,8 +241,16 @@ class MysqlDriver implements DatabaseAbstractionLayer
         }catch (PDOException $e){
             echo "Database table $table doesn't exist";
         }
+
+        return true;
     }
 
+    /**
+     * Check if database column is valid and exists
+     * @param $table
+     * @param $columns
+     * @return bool
+     */
     public function columnsExists($table, $columns)
     {
         $statement = $this->pdo->prepare("DESCRIBE $table");
@@ -205,29 +259,44 @@ class MysqlDriver implements DatabaseAbstractionLayer
 
         try{
             if (count(array_intersect($tableColumns,$columns)) < count($columns)){
-                throw new PDOException('Specified columns are not valid');
+                throw new PDOException("Specified columns are not valid");
             }
         }catch (PDOException $e){
-            echo $e->getMessage();
+            echo $e->getMessage()."<br>";
         }
         return true;
     }
 
+    /**
+     * Begin the transaction
+     */
     public function beginTransaction()
     {
         $this->pdo->beginTransaction();
     }
 
+    /**
+     * Commit the transaction the performed queries don't fail
+     * @return bool
+     */
     public function commitTransaction()
     {
         return $this->pdo->commit();
     }
 
+    /**
+     * Roll the transaction back
+     * @return bool
+     */
     public function rollBackTransaction()
     {
         return $this->pdo->rollBack();
     }
 
+    /**
+     * Get current driver name
+     * @return string
+     */
     public function getDriverName()
     {
         return $this->driverName;
