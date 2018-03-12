@@ -115,7 +115,7 @@ class ConnectionManager implements DatabaseAbstractionLayer
 
     /**
      *
-     * Performs a select query in a database table with the specified fields and conditions
+     * Insert a record on a database table. Uses a specific db driver.
      * @param $table
      * @param $fields
      * @param array $conditions
@@ -126,44 +126,90 @@ class ConnectionManager implements DatabaseAbstractionLayer
         return $this->driver->select($table, $fields, $conditions, $options);
     }
 
+    /**
+     * Insert a record on a database table. Uses a specific db driver.
+     * @param $table
+     * @param $data
+     * @return mixed
+     */
     public function insert($table, $data)
     {
         return $this->driver->insert($table, $data);
     }
 
+    /**
+     * Update a record on a database table. Uses a specific db driver.
+     * @param $table
+     * @param array $data
+     * @param array $conditions
+     * @return mixed
+     */
     public function update($table, array $data, array $conditions){
         return $this->driver->update($table, $data, $conditions);
     }
 
-    public function delete(){
-        return $this->driver->delete();
+    /**
+     * Delete a record on a database table. Uses a specific db driver.
+     * @param $table
+     * @param array $codiitions
+     * @return mixed
+     */
+    public function delete($table, array $codiitions){
+        return $this->driver->delete($table, $codiitions);
     }
 
+    /**
+     * Validates the existence of the specified database table. Uses a specific db driver.
+     * @param $table
+     * @return mixed
+     */
     public function tableExists($table)
     {
         return $this->driver->tableExists($table);
     }
 
+    /**
+     * Validate the existence of the specified columns. Uses a specific db driver.
+     * @param $table
+     * @param $columns
+     * @return mixed
+     */
     public function columnsExists($table, $columns)
     {
         return $this->driver->columnsExists($table, $columns);
     }
 
+    /**
+     * Start a database transaction. Uses a specific db driver.
+     * @return mixed
+     */
     public function beginTransaction()
     {
         return $this->driver->beginTransaction();
     }
 
+    /**
+     * Commit a database transaction.  Uses a specific db driver.
+     * @return mixed
+     */
     public function commitTransaction()
     {
         return $this->driver->commitTransaction();
     }
 
+    /**
+     * Rollback a database transaction. Uses a specific db driver.
+     * @return mixed
+     */
     public function rollBackTransaction()
     {
         return $this->driver->rollBackTransaction();
     }
 
+    /**
+     * Close a database connection. Uses a specific db driver.
+     * @return mixed
+     */
     public function close()
     {
         return $this->driver->close();
