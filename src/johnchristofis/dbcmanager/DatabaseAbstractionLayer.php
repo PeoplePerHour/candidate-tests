@@ -18,7 +18,7 @@ interface DatabaseAbstractionLayer
 
     public function select($table, array $fields, array $conditions, array $options);
     public function insert($table, $data);
-    public function update();
+    public function update($table, array $data, array $where);
     public function delete();
 
     public function tableExists($table);
