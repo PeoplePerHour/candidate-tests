@@ -1,0 +1,283 @@
+
+
+
+BODY {
+  padding: 10px;
+  background-color: #eff1ff;
+  text-align: center;
+  background-image: url("https://rickandmortyapi.com/api/character/avatar/24.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.search-results {
+  padding: 20px;
+  max-width: 500px;
+}
+
+.search-results .search-item {
+  padding: 2px;
+}
+
+.search-results .search-item:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  color: red;
+}
+
+.search-results .results-header {
+  margin-bottom: 5px;
+  padding-top: 2px;
+}
+
+.search-results .results-header .title {
+  font-size: 25px;
+  height: 35px;
+  vertical-align: middle;
+  display: table-cell;
+  border-bottom: 1px solid #00c5ff;
+}
+
+.search-filters {
+  padding: 20px;
+  max-width: 180px;
+}
+
+.search-filters h2 {
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.search-filters .nav-but {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  padding: .25rem .5rem;
+  font-size: .875rem;
+  line-height: 1.5;
+  border-radius: .2rem;
+  color: #fff;
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+  width: 85px;
+  margin: 2px;
+}
+
+.search-filters .nav-but:hover {
+  color: #fff;
+  background-color: #138496;
+  border-color: #117a8b;
+  cursor: pointer;
+}
+
+.search-filters .filter-block {
+  padding: 0px;
+}
+
+.search-filters .filter-title {
+  padding: 2px;
+}
+
+.search-filters .dropd-filter {
+  display: inline-block;
+  width: 100%;
+  padding: .375rem 1.75rem .375rem .75rem;
+  line-height: 1.5;
+  color: #495057;
+  vertical-align: middle;
+  background-size: 8px 10px;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  cursor: pointer;
+}
+
+.custom-modal {
+  padding: 40px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 9999;
+  display: none;
+  overflow: hidden;
+  outline: 0;
+  padding: 40px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.custom-modal .modal-body {
+  position: relative;
+  width: auto;
+  max-width: 500px;
+  margin: 1.75rem auto;
+  background-color: cyan;
+  padding: 10px;
+  padding-top: 0px;
+  border-radius: 10px;
+  background-color: #ffece4;
+}
+
+.custom-modal .closer {
+  text-align: right;
+  padding: 10px;
+}
+
+.custom-modal .portait,
+.custom-modal .primary-properties {
+  width: 50%;
+  height: 100%;
+  max-height: 250px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.custom-modal .portait img {
+  width: 100%;
+  max-width: 200px;
+}
+
+.custom-modal .primary-properties {
+  text-align: left;
+}
+
+.custom-modal .secondary-properties {
+  padding: 20px;
+  text-align: left;
+}
+
+.custom-modal .secondary-properties .location .title,
+.custom-modal .secondary-properties .origin .title {
+  padding: 2px;
+  width: 90px;
+  display: inline-block;
+}
+
+.custom-modal .secondary-properties .details {
+  padding: 2px;
+  padding-top: 20px;
+}
+
+.custom-modal .secondary-properties .location a,
+.custom-modal .secondary-properties .origin a {
+  color: #595c03;
+}
+
+.custom-modal .secondary-properties .details a,
+.custom-modal .closer a {
+  font-size: 20px;
+  color: red;
+}
+
+.custom-modal h2 {
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.custom-modal h3 {
+  font-style: italic;
+  padding-left: 5px;
+}
+
+.custom-modal .episode {
+  display: inline-block;
+  padding: 5px;
+}
+
+.custom-modal .episode h3,
+.custom-modal .origin span,
+.custom-modal .location span {
+  padding: 0px;
+}
+
+.container {
+  max-width: 1000px;
+  display: inline-block;
+  text-align: left;
+  width: 100%;
+  border: 1px solid #ece1e1;
+  background-color: #fbfbfb;
+  margin-top: 10px;
+}
+
+.container .search-filter-cont {
+  display: inline-block;
+  vertical-align: top;
+  text-align: left;
+  width: 25%;
+}
+
+.container .search-results-cont {
+  display: inline-block;
+  vertical-align: top;
+  text-align: left;
+  width: 75%;
+}
+
+#logo {
+  margin: 0;
+  text-transform: uppercase;
+  line-height: .75em;
+  color: #202329;
+  border: none;
+  color: inherit;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  font-weight: 600;
+  text-rendering: optimizeLegibility;
+  font-size: 2rem;
+  line-height: 1.1;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+  max-width: 1000px;
+  display: block;
+  margin: auto;
+  text-align: left;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+@media only screen and (max-width: 800px) {
+  body {
+    background-color: #000000;
+  }
+  .search-filters {
+    max-width: 100%;
+  }
+  .dropd-filter {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+  .container .search-filter-cont,
+  .container .search-results-cont {
+    width: 100%;
+  }
+  .custom-modal .portait,
+  .custom-modal .primary-properties {
+    width: 100%;
+    height: 100%;
+    max-height: 250px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .custom-modal .primary-properties {
+    padding: 20px;
+  }
+  .custom-modal .portait {
+    background-color: #3a3535;
+    border-radius: 5px;
+  }
+}
+
