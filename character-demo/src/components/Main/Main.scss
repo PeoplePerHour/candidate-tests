@@ -1,7 +1,80 @@
+$blueColor: #2194D3;
+$whiteColor: #f1f1f1;
+
+.app {
+    width: 100%;
+    background: $blueColor;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.mainHeader {
+    padding: 1rem;
+    font-size: 3rem;
+    display: block;
+    color: black;
+  }
+
 .main {
     display: flex;
-    width: 85%;
-    height: 300px;
+    justify-content: center;
+    width: 80%;
+    height: 80%;
     flex-flow: row wrap;
     position: relative;
 }
+
+.footer {
+    display: inline-flex;
+    margin: 30px 0px 30px 0px;
+    width: 45%;
+    height: 45%;
+    padding-left: 10px;
+    padding-right: 10px;
+    flex: 1;
+    flex-direction: row;
+    justify-content: space-around;
+    align-Items: center;
+}
+
+.previousContainer, .nextContainer {
+    width: 20%;
+    background-color: $whiteColor;
+    padding: 20px;
+    border-radius: 5px;
+    display: flex;
+    
+    justify-content: center;
+    text-align: center;
+}
+
+.previousButton, .nextButton {
+    position: relative;
+    width: 100%;
+    border: 0;
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+// previousButtonIcon {
+//     position: 'absolute',
+//     left: '15@ms0.3',
+//     top: '10@ms0.3',
+//     color: '#fff',
+//     fontSize: '16@ms0.4',
+//     lineHeight: '20@ms0.3',
+//     alignSelf: 'flex-start'
+// }
+
+// nextButtonIcon {
+//     position: 'absolute',
+//     right: '15@ms0.4',
+//     top: '10@ms0.4',
+//     color: '#fff',
+//     fontSize: '16@ms0.4',
+//     lineHeight: '20@ms0.3',
+// }
