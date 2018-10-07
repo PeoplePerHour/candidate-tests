@@ -1,20 +1,20 @@
 import React from 'react';
-import Main from './components/Main.js';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Landing from './components/Landing/Landing.js';
+import Main from './components/Main/Main.js';
 
 export default class App extends React.Component {
 
-    constructor(props) {
-        super(props);
-    }
+  render() {
 
-    render() {
+    return (
+      <BrowserRouter>
+        <Switch>
+            <Route exact path="/" component={Landing}></Route>
+            <Route path="/main" component={Main}></Route>
+          </Switch>
+        </BrowserRouter>
+    );
 
-        return (
-          <div>
-            <Main/>
-          </div>
-            
-        );
-
-    }
+  }
 }
