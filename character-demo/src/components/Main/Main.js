@@ -13,20 +13,20 @@ class Main extends React.Component {
 
         this.prevButtonPress = this.prevButtonPress.bind(this);
         this.nextButtonPress = this.nextButtonPress.bind(this);
+        this.sortContentGender = this.sortContentGender.bind(this);
 
         this.state = {
             pending: true,
             characters: [],
+            sortedArray: [],
             prev: null,
             next: null,
             filter: false,
-            gender: '',
+            sortByGender: null,
             spieces: '',
             status: ''
         }
     }
-
-
 
     getContent() {
 
@@ -37,13 +37,14 @@ class Main extends React.Component {
             // body: requestData
         }).then((response) => response.json()).then((data) => {
 
-            console.log(data);
+            
             this.setState({
-               characters: data.results,
+                characters: data.results,
+                sortedArray: data.results,
                 prev: data.info.prev,
                 next: data.info.next
             });
-
+            console.log(this.state.characters);
         }).catch((err) => {
 
             console.log(err);
@@ -56,10 +57,36 @@ class Main extends React.Component {
 
     }
 
-    componentDidMount = () => {
+    componentWillMount = () => {
 
         this.getContent();
     }
+
+    sortContentGender(e) {
+        var sortBy = e.target.value;
+        // let charactersArray = this.state.characters;
+        let sortedArray = this.state.characters;
+        
+
+        switch (sortBy) {
+            case 'Male':
+                sortedArray = Array.prototype.slice.call(this.state.characters).filter(x=> {
+                   return x.gender!=="Female" && x.gender!=="unknown";
+                } );
+                break;
+            case 'Female':
+                sortedArray = Array.prototype.slice.call(this.state.characters).filter(x => {
+                  return x.gender !=="Male" && x.gender!=="unknown";
+                });
+                break;
+            default:
+                break;
+        }
+        
+        console.log(sortedArray);
+        this.setState({ sortedArray: sortedArray, sortBy: e.target.value });
+    }
+
 
     nextButtonPress(e) {
         e.preventDefault();
@@ -70,7 +97,8 @@ class Main extends React.Component {
 
             console.log(data);
             this.setState({
-               characters: data.results,
+                characters: data.results,
+                sortedArray: data.results,
                 prev: data.info.prev,
                 next: data.info.next
             });
@@ -84,9 +112,9 @@ class Main extends React.Component {
                 pending: false
             });
         });
-      }
-    
-      prevButtonPress(e) {
+    }
+
+    prevButtonPress(e) {
         e.preventDefault();
         fetch(this.state.prev, {
             method: 'GET',
@@ -95,7 +123,8 @@ class Main extends React.Component {
 
             console.log(data);
             this.setState({
-               characters: data.results,
+                characters: data.results,
+                sortedArray: data.results,
                 prev: data.info.prev,
                 next: data.info.next
             });
@@ -109,14 +138,49 @@ class Main extends React.Component {
                 pending: false
             });
         });
-      }
+    }
+
+    renderHeader() {
+        return (
+            <div className="headerContainer">
+                <div className="genderContainer">
+                    <div className="sortby">Sort by Gender:</div>
+                    <div>
+                        <select id="lang" onChange={e => this.sortContentGender(e)}>
+                            <option value="None">None</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                </div>
+                <div className="spiecesContainer">
+                    <div className="sortby">Sort by Spieces:</div>
+                    <div>
+                        <select id="lang" onChange={e => this.sortContentSpieces(e)}>
+                            <option value="none">None</option>
+                            <option value="spieces">Spieces</option>
+                        </select>
+                    </div>
+                </div>
+                <div className="statusContainer">
+                    <div className="sortby">Sort by Status:</div>
+                    <div>
+                        <select id="lang" onChange={e => this.sortContentStatus(e)}>
+                            <option value="none">None</option>
+                            <option value="status">Status</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 
     renderBody() {
         if (this.state.characters && !this.state.pending) {
             return (
-                <div>
+                <div className="main">
 
-                    {this.state.characters.map((character, i) => (
+                    {this.state.sortedArray.map((character, i) => (
                         <CharacterCard character={character} key={i} handleClick={this.handleClick} />
                     ))}
                 </div>
@@ -137,18 +201,19 @@ class Main extends React.Component {
     }
 
     render() {
+        let header = this.renderHeader();
         let body = this.renderBody();
 
         return (
             <div className="app">
                 <div className="mainHeader">
-                    <div>welcome</div>
+                    {header}
                 </div>
-                <div className="main">
+                <div >
                     {body}
                 </div>
-                <Footer footer={this.state} nextButtonPress = {this.nextButtonPress} prevButtonPress = {this.prevButtonPress}/>
-               
+                <Footer footer={this.state} nextButtonPress={this.nextButtonPress} prevButtonPress={this.prevButtonPress} />
+
             </div>
 
         );

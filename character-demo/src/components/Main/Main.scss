@@ -14,16 +14,25 @@ $whiteColor: #f1f1f1;
 
 .mainHeader {
     padding: 1rem;
-    font-size: 3rem;
+    font-size: 20px;
     display: block;
     color: black;
   }
 
-.main {
+  .headerContainer {
+      display: flex;
+  }
+
+  .genderContainer, .spiecesContainer, .statusContainer {
     display: flex;
+    padding: 0 10px 0 10px;
+  }
+
+.main {
+    // display: flex;
     justify-content: center;
-    width: 80%;
-    height: 80%;
+    width: 900px;
+    height: auto;
     flex-flow: row wrap;
     position: relative;
 }
