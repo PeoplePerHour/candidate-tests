@@ -11,7 +11,6 @@ class CharacterCard extends React.Component {
                 <img src={this.props.character.image} alt="Avatar" style={{width: '100%'}} />
                 <div className="container">
                     <b>{this.props.character.name}</b>
-                    {/* <p>Architect & Engineer</p> */}
                 </div>
             </div>
         );
