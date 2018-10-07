@@ -1,7 +1,7 @@
 .card {
     display: inline-block;
     margin: 10px 0 0 2%;
-    width: auto;
+    width: 250px;
     height: auto;
     flex: 1;
     flex-basis: 20%;
@@ -17,7 +17,8 @@
 }
 
 .container {
-    text-align: center;
+    display: flex;
+    justify-content: center;
     height: 50px;
 }
 
