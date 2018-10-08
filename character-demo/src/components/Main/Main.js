@@ -2,9 +2,13 @@ import React from 'react';
 import './Main.scss';
 import CharacterCard from '../CharacterCard/CharacterCard';
 import Footer from './Footer';
+import Modal from '../Modal/Modal';
 import { API_URL } from '../../config';
 
 import Loader from 'react-loader-spinner';
+
+
+var selectedChar;
 
 class Main extends React.Component {
 
@@ -13,38 +17,42 @@ class Main extends React.Component {
 
         this.prevButtonPress = this.prevButtonPress.bind(this);
         this.nextButtonPress = this.nextButtonPress.bind(this);
-        this.sortContentGender = this.sortContentGender.bind(this);
-
+        this.handleClick = this.handleClick.bind(this);
+        this.onOverlayClick = this.onOverlayClick.bind(this);
+        
         this.state = {
             pending: true,
-            characters: [],
             sortedArray: [],
             prev: null,
             next: null,
             filter: false,
             sortByGender: null,
             spieces: '',
-            status: ''
+            status: '',
+            show: false
         }
     }
 
+    
+    componentWillMount = () => {
+
+        this.getContent();
+    }
+
     getContent() {
-
-        console.log(`Retrieving content`);
-
         fetch(API_URL, {
             method: 'GET',
             // body: requestData
         }).then((response) => response.json()).then((data) => {
 
-            
+            console.log(data);
             this.setState({
                 characters: data.results,
                 sortedArray: data.results,
                 prev: data.info.prev,
                 next: data.info.next
             });
-            console.log(this.state.characters);
+
         }).catch((err) => {
 
             console.log(err);
@@ -54,41 +62,56 @@ class Main extends React.Component {
                 pending: false
             });
         });
-
-    }
-
-    componentWillMount = () => {
-
-        this.getContent();
     }
 
     sortContentGender(e) {
         var sortBy = e.target.value;
         // let charactersArray = this.state.characters;
         let sortedArray = this.state.characters;
-        
+
 
         switch (sortBy) {
             case 'Male':
-                sortedArray = Array.prototype.slice.call(this.state.characters).filter(x=> {
-                   return x.gender!=="Female" && x.gender!=="unknown";
-                } );
+                sortedArray = Array.prototype.slice.call(this.state.characters).filter(x => {
+                    return x.gender !== "Female" && x.gender !== "unknown";
+                });
                 break;
             case 'Female':
                 sortedArray = Array.prototype.slice.call(this.state.characters).filter(x => {
-                  return x.gender !=="Male" && x.gender!=="unknown";
+                    return x.gender !== "Male" && x.gender !== "unknown";
                 });
                 break;
             default:
                 break;
         }
-        
+
         console.log(sortedArray);
         this.setState({ sortedArray: sortedArray, sortBy: e.target.value });
     }
 
 
+    handleClick(character, e) {
+        selectedChar = character;
+        // console.log(selectedChar);      
+            this.setState({
+                show: true
+            });
+    }
+
+    onOverlayClick() {
+        this.hideModal();
+      }
+
+
+    hideModal = () => {
+        this.setState({
+            show: false
+        });
+    };
+   
+
     nextButtonPress(e) {
+        this.setState({ pending: true});
         e.preventDefault();
         fetch(this.state.next, {
             method: 'GET',
@@ -115,6 +138,7 @@ class Main extends React.Component {
     }
 
     prevButtonPress(e) {
+        this.setState({ pending: true});
         e.preventDefault();
         fetch(this.state.prev, {
             method: 'GET',
@@ -175,14 +199,20 @@ class Main extends React.Component {
         );
     }
 
+
+
     renderBody() {
         if (this.state.characters && !this.state.pending) {
+
             return (
                 <div className="main">
 
                     {this.state.sortedArray.map((character, i) => (
-                        <CharacterCard character={character} key={i} handleClick={this.handleClick} />
-                    ))}
+                        <CharacterCard character={character} key={i} clickCard={this.handleClick.bind(this, character)}/> 
+                     ))}
+                     {this.state.sortedArray.map((character, j) => (
+                         <Modal character={character} selectedCharacter={selectedChar} onOverlay={this.onOverlayClick} isShown ={this.state.show} key={j}/>
+                         ))} 
                 </div>
             );
         } else {
