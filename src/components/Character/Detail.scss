@@ -1,0 +1,33 @@
+@import '~styles/colors';
+
+.CharacterDetail {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.CharacterDetail__avatar {
+  position: relative;
+}
+
+.CharacterDetail__status {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.CharacterDetail__info {
+  padding: 10px;
+
+  p {
+    margin: 4px 0;
+  }
+
+  h2 {
+    margin: 0 0 5px;
+
+    > span {
+      color: $gray-dark;
+      font-size: 16px;
+    }
+  }
+}

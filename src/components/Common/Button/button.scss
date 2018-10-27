@@ -1,0 +1,65 @@
+@import '~styles/colors';
+
+.Button {
+  background: transparent;
+  border: 1px solid $theme-color;
+  border-radius: 3px;
+  color: $theme-color;
+  cursor: pointer;
+  margin: 0.25rem;
+  padding: 10px 20px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.2s;
+  white-space: nowrap;
+
+  &:disabled {
+    cursor: inherit;
+    opacity: .5;
+  }
+
+  &:hover:not(:disabled):not(.Button--plain) {
+    color: white;
+    background-color: $theme-color;
+  }
+
+ @media all and (max-width:30em) {
+    display:block;
+    margin:0.4em auto;
+  }
+}
+
+.Button--plain {
+  margin: 0;
+  border: 0;
+  text-transform: capitalize;
+  color: $gray-darker;
+  padding: 20px;
+
+  &:focus,
+  &:active,
+  &:hover {
+    color: darken($gray-darker, 42%);
+  }
+}
+
+@each $key, $value in $colors {
+  .Button--#{$key} {
+    &.Button:not(.Button--plain) {
+      border: 1px solid $value;
+      color: $value;
+
+      &:hover:not(:disabled) {
+        color: white;
+        background-color: $value;
+      }
+
+    }
+
+    &.Button--plain {
+      color: $value;
+    }
+
+  }
+}
+

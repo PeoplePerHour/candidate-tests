@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="Avatar"
+>
+  <div
+    className="Avatar__image-container"
+  >
+    <img
+      alt="kitten"
+      src="https://placekitten.com/200/300"
+    />
+  </div>
+</div>
+`;

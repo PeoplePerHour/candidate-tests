@@ -1,0 +1,15 @@
+@import '~styles/colors';
+
+.Label {
+  padding: 2px 5px;
+  display: inline-block;
+  border-radius: 3px;
+  font-size: 12px;
+  color: white;
+}
+
+@each $key, $var in $colors {
+  .Label--#{$key} {
+    background-color: #{$var};
+  }
+}

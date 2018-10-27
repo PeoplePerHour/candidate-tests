@@ -1,0 +1,25 @@
+.CharacterList {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.CharacterList__items-container {
+  box-shadow: 1px 1px 10px rgba(0,0,0,.05);
+  position: relative;
+}
+
+.CharacterList__footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.CharacterList__loading {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(white, .7);
+}

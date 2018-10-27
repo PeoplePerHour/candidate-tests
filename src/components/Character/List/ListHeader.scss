@@ -1,0 +1,18 @@
+@import '~styles/colors';
+
+.CharacterListHeader {
+  background-color: white;
+  box-shadow: 1px 1px 10px rgba(0,0,0,.05);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 20;
+}
+
+.CharacterListHeader__info {
+  padding: 20px;
+  color: darken($gray-dark, 20%);
+  font-weight: 600;
+  border-right: 1px solid $gray-light;
+}

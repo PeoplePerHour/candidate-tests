@@ -1,0 +1,63 @@
+@import '~styles/colors';
+
+.Filter {
+  position: relative;
+}
+
+.Filter__items {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  min-width: 200px;
+  background-clip: padding-box;
+  border: 1px solid $gray-light;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.05);
+
+  > .Button {
+    padding: 5px 5px 10px;
+    font-size: 12px;
+    color: $gray-dark;
+  }
+}
+
+.Filter__items-options {
+  overflow: auto;
+  max-height: 300px;
+  display: flex;
+  flex-direction: column;
+
+  .Button {
+    &:hover {
+      background-color: $gray-light;
+    }
+  }
+}
+
+.Filter__trigger {
+  position: relative;
+  border-right: 1px solid $gray-light;
+  &--active {
+    &:before {
+      border-color: $orange transparent transparent $orange;
+      border-style: solid;
+      border-width: 10px;
+      content: '';
+      position: absolute;
+    }
+  }
+}
+
+.Filter {
+  input[type="text"] {
+    margin: 10px 20px 5px;
+    padding: 5px;
+
+    &:focus {
+      border-color: $theme-color;
+      border-shadow: 0;
+    }
+  }
+}

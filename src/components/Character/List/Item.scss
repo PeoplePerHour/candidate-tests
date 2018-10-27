@@ -1,0 +1,57 @@
+@import '~styles/colors';
+
+.CharacterListItem {
+  display: flex;
+  align-items: flex-start;
+  background-color: white;
+  padding: 15px;
+  position: relative;
+  z-index: 1;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid $gray-light;
+  }
+
+  &:hover {
+    transform: scale(1.01);
+    box-shadow: 1px 1px 10px rgba(0,0,0,.05);
+    z-index: 2;
+  }
+}
+
+.CharacterListItem__Avatar {
+  width: 120px;
+  height: 120px;
+}
+
+.CharacterListItem__Info {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  padding-left: 15px;
+  width: 100%;
+
+  > header {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 2px;
+
+  }
+
+  h5 {
+    font-size: 20px;
+    margin: 0 0 0 5px;
+
+    > a {
+      text-decoration: none;
+      color: black;
+    }
+
+    > span {
+      margin: 0 0 0 5px;
+      color: $gray-dark;
+      font-size: 14px;
+    }
+  }
+}
