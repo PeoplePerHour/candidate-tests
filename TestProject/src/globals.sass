@@ -1,0 +1,115 @@
+
+$color0: #000000 //black
+$color0h: #239fd0
+
+$color1: #151515 //almost black
+$color2: #e4e4e4 //grey
+$color3: #fbfbfb //almost white
+
+$redColor: #e42929
+$redColorfade: #ec4646
+
+$padDecor: 10px
+
+$baseFontSize: 14px
+$smMobFontSize: 13px
+
+=keyframes($var)
+  @-webkit-keyframes #{$var}
+    @content
+  @-moz-keyframes #{$var}
+    @content
+  @-ms-keyframes #{$var}
+    @content
+  @keyframes #{$var}
+    @content
+
+
++keyframes(mover)
+  0%
+    left: -100%
+  100%
+    left: 100%
+
+$lapt: "all and (max-width: 1280px)"
+$tabl: "all and (max-width: 1024px)"
+$tabs: "all and (max-width: 768px)"
+$mob: "all and (max-width: 425px)"
+$mobs: "all and (max-width: 320px)"
+
+=flex
+  display: -webkit-flex
+  display: -moz-box
+  display: -ms-flexbox
+  display: -o-flex
+  display: flex
+
+=flexi($var)
+  -webkit-flex: $var
+  -moz-flex: $var
+  -ms-flex: $var
+  -o-flex: $var
+  flex: $var
+
+=flex-wrap($var)
+  -webkit-flex-wrap: $var
+  -moz-flex-wrap: $var
+  -ms-flex-wrap: $var
+  -o-flex-wrap: $var
+  flex-wrap: $var
+
+=flex-flow($var)
+  -webkit-flex-flow: $var
+  -moz-flex-flow: $var
+  -ms-flex-flow: $var
+  -o-flex-flow: $var
+  flex-flow: $var
+
+=flex-direction($var)
+  -webkit-flex-direction: $var
+  -moz-flex-direction: $var
+  -ms-flex-direction: $var
+  -o-flex-direction: $var
+  flex-direction: $var
+
+=align-items($var)
+  -webkit-align-items: $var
+  -moz-align-items: $var
+  -ms-align-items: $var
+  -o-align-items: $var
+  align-items: $var
+
+=justify-content($var)
+  -webkit-justify-content: $var
+  -moz-justify-content: $var
+  -ms-justify-content: $var
+  -o-justify-content: $var
+  justify-content: $var
+
+=transform($var)
+  -webkit-transform: $var
+  -moz-transform: $var
+  -ms-transform: $var
+  -o-transform: $var
+  transform: $var
+  
+=transform-origin($var)
+  -webkit-transform-origin: $var
+  -moz-transform-origin: $var
+  -ms-transform-origin: $var
+  -o-transform-origin: $var
+  transform-origin: $var
+
+=transition($var)
+  -webkit-transition: $var
+  -moz-transition: $var
+  -ms-transition: $var
+  -o-transition: $var
+  transition: $var
+
+=animation($var)
+  -webkit-animation: $var
+  -moz-animation: $var
+  -ms-animation: $var
+  -o-animation: $var
+  animation: $var

@@ -1,0 +1,57 @@
+@import globals
+
+.filtersBar
+  position: fixed
+  width: 270px
+  z-index: 20
+  background: $color1
+  right: 0
+  left: 100%
+  top: 150px
+  will-change: transform
+  +transform(translate(0,0%))
+  +transition(transform 0.6s ease-in-out 0s)
+  border-bottom-left-radius: 3px
+  padding: $padDecor
+  color: #fff
+
+  @media #{$mob}
+		margin-bottom: 10px
+		width: 230px
+
+  &.open
+    +transform(translate(-100%,0))
+
+  .icon
+    position: absolute
+    top: 0
+    right: 100%
+    width: 50px
+    height: 50px
+    background: $color1
+    border-top-left-radius: 3px
+    border-bottom-left-radius: 3px
+    padding: 5px
+    cursor: pointer
+
+  .filters
+    display: block
+    width: 100%
+
+    select
+      display: block
+      width: 100%
+      background: $color3
+      padding: 5px
+      border: 0px
+
+    select:focus, select:active
+      outline: 0px
+
+    label
+      display: block
+      margin-bottom: 10px
+
+      span
+        display: block
+        margin-bottom: 5px

@@ -1,0 +1,137 @@
+@import globals
+
+.loader
+  position: relative
+  width: 100%
+  height: 80vh
+  +flex
+  +flex-direction(column)
+  +justify-content(center)
+  +align-items(center)
+
+  .loaderLine
+    position: relative
+    width: 100%
+    max-width: 250px
+    height: 1px
+    background: $color2
+    overflow: hidden
+
+  .loaderLine::after
+    content: ""
+    display: block
+    position: absolute
+    top: 0
+    left: -100%
+    width: 100%
+    height: 1px
+    background: $redColor
+    +animation(mover 2s infinite ease-in-out)
+
+.nothingFound
+  position: relative
+  width: 100%
+  height: 80vh
+  color: $color1
+  +flex
+  +flex-direction(column)
+  +justify-content(center)
+  +align-items(center)
+
+  h1
+    font-size: 2.4em
+
+.pagination
+	padding: $padDecor
+	text-align: center
+
+	button
+		display: inline-block
+		margin-right: 10px
+
+		@media #{$mob}
+			margin-bottom: 10px
+			width: 100%
+
+.itemsApp
+  position: relative
+  padding: $padDecor
+
+.itemsList
+  +flex
+  +flex-wrap(wrap)
+  +justify-content(flex-start)
+  +flex-flow(row wrap)
+  +align-items(stretch)
+
+  .item
+    width: 20%
+    margin-bottom: 0px
+    padding: $padDecor
+
+    @media #{$lapt}
+      width: 25%
+    @media #{$tabl}
+      width: 33.333%
+    @media #{$tabs}
+      width: 50%
+    @media #{$mob}
+      width: 100%
+
+    .itemInner
+      background: $color3
+      border: 1px solid $color2
+      height: 100%
+      padding: 20px
+      cursor: pointer
+
+      .imgContainer
+        width: 100px
+        height: 100px
+        margin: 0 auto 10px auto
+        overflow: hidden
+        border-radius: 100%
+
+
+        img
+          display: block
+          width: 100%
+
+      .name
+        text-align: center
+        font-size: 1.5em
+        +transition(color 0.2s ease 0s)
+
+      .sepLine
+        background: $color2
+        height: 1px
+        width: 80px
+        margin: 10px auto
+
+      .extraInfo > table
+        width: 100%
+        padding: 10px
+
+        .infot
+          font-weight: 700
+          padding-right: 5px
+
+        .infos
+          text-align: right
+
+        thead
+          text-align: center
+          padding-bottom: 10px
+
+        tbody > tr > td
+          width: 50%
+          vertical-align: top
+
+          table
+            margin-top: 10px
+            width: 100%
+
+  .item:hover .itemInner
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1)
+    .name
+        color: $redColor

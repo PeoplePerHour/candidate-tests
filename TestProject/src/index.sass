@@ -1,0 +1,58 @@
+@import globals
+
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+
+body, html
+  color: $color0
+  font-size: $baseFontSize
+  font-family: 'Playfair Display', serif
+
+  @media #{$mobs}
+    font-size: $smMobFontSize
+
+body.clip
+  overflow: hidden
+
+a:visited, a:focus
+  color: inherit
+
+a
+  text-decoration: none
+
+a:hover
+  color: $color0h
+
+button
+  width: 150px
+  border: none
+  border-radius: 3px
+  color: #fff
+  background: $redColorfade
+  font-weight: 700
+  padding: 10px
+  font-size: 1.25em
+  cursor: pointer
+  font-family: 'Playfair Display', serif
+
+button:hover
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.1)
+	background: $redColor
+
+button[disabled]
+	background: $color2
+	cursor: not-allowed
+
+button[disabled]:hover, button[disabled]:focus, button[disabled]:active
+	box-shadow: 0px 0px 0px rgba(0,0,0,0)
+
+button:focus
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.1)
+	outline: none
+
+button:active
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.28)

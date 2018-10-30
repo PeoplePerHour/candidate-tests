@@ -1,0 +1,132 @@
+@import globals
+
+.modal
+  position: fixed
+  top: 0
+  left: 0
+  z-index: 20
+  width: 100%
+  height: 100%
+  overflow-x: hidden
+  overflow-y: auto
+  background: rgba(255,255,255,0.8)
+  padding: $padDecor
+  +flex()
+  +justify-content(center)
+  +align-items(center)
+  
+  .modalInner
+    display: block
+    position: relative
+    width: 100%
+    max-width: 500px
+    background: $color3
+    border: 1px solid $color2
+    border-radius: 3px
+    margin: auto
+    padding: 10px 60px 60px 10px
+    
+    .loader
+      height: auto
+      margin-top: 20px;
+      
+      .loaderLine::after
+        +animation(mover 1s infinite ease-in-out)
+    
+    .closeBar
+      position: absolute
+      top: 10px
+      right: 10px
+      height: 100%;
+    
+    .close
+      position: absolute
+      position: -webkit-sticky
+      position: sticky
+      top: 0px
+      width: 40px
+      height: 40px
+      background: $color1
+      cursor: pointer
+      border-radius: 3px
+      padding: 9px
+      padding-top: 10px
+      +flex-direction(column)
+      +flex()
+      +justify-content(center)
+      +align-items(center)
+        
+      span
+        position: absolute
+        bottom: 0%
+        left: 50%
+        padding-left: 20px
+        padding-bottom: 2px
+        letter-spacing: 7px
+        font-size: 1em
+        font-family: 'Playfair Display', serif
+        +transition(all 0.6s ease-in-out)
+        +transform(rotate(90deg))
+        +transform-origin(left center)
+    
+        
+    .close:hover
+      background: $redColor
+      color: $redColor
+      
+    .close:before, .close:after
+      content: ""
+      display: block
+      width: 100%
+      height: 1px
+      background: $color2
+      +transform-origin(center center)
+      
+    .close:before
+        +transform(rotate(45deg))
+    .close:after
+        +transform(rotate(-45deg))
+        margin-top: -1px
+        
+    .image
+      display: block
+      width: 100%
+      margin-bottom: 10px
+      border-radius: 3px
+      
+    .extraBigTitle
+      font-size: 3em
+      font-weight: 900
+      line-height: 1em
+      margin-bottom: 20px
+      
+    .extraInfo
+      border-top: 1px solid $color2
+    
+      table
+        width: 100%
+        
+        .infot
+          font-weight: 700
+          padding-right: 5px
+          
+        .infos
+          text-align: right
+          
+          span
+            display: block;
+            width: 100%
+            margin-bottom: 7px
+          
+        thead
+          text-align: center
+          padding-bottom: 10px
+
+        tbody > tr > td
+          vertical-align: top
+          width: 50%
+          border-bottom: 10px solid rgba(255,255,255,0);
+          
+          table
+            margin-top: 10px
+            width: 100%
