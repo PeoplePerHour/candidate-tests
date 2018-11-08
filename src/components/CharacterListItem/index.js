@@ -1,0 +1,1 @@
+export { default, CharacterListItem } from './Component';

@@ -1,0 +1,11 @@
+.characterListItemComponent {
+	.ant-list-item {
+		cursor: pointer;
+	}
+
+	&:hover {
+		.ant-list-item {
+			background: #fcfcfc;
+		}
+	}
+}

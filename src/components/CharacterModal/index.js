@@ -1,0 +1,1 @@
+export { default, CharacterModal } from './Component';
