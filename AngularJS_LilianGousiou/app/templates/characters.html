@@ -1,0 +1,48 @@
+<div class="loader-overlay" ng-hide="hideLoader">
+  <div class="spin-loader" class="shrink"></div>
+</div>
+
+<section ng-init="initiaze()" ng-show="hideLoader">
+
+  <h1>Characters</h1>
+
+  <!-- characters listing header - filtering -->
+  <ng-include src="'/templates/filtering.html'"></ng-include>
+  <!-- end of characters listing header - filters -->
+
+  <!-- characters listing -->
+  <div class="table-container" ng-if="characters">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <!-- characters listing header -->
+      <thead class="table-header">
+        <tr>
+          <th scope="col" ng-repeat="header in thead" ng-class="'table-th-{{header}}'" ng-if="header!=url" ng-show="$index<limit" ng-bind="header"></th>
+        </tr>
+      </thead>
+      <!-- end of characters listing header -->
+      <!-- characters listing body -->
+      <tbody class="table-content">
+        <tr ng-repeat="character in characters" ng-click="showCharacter(character)">
+          <td ng-repeat="prop in thead" ng-switch on="prop" ng-show="$index<limit">
+            <div ng-switch-when="image"> <img ng-src="{{character.image}}"/> </div>
+            <div ng-switch-when="location|origin" ng-switch-when-separator="|" ng-bind="character[prop].name"></div>
+            <div ng-switch-when="created" ng-bind="character.created | date:'h:mma dd/MM/yyyy'"></div>
+            <div ng-switch-default ng-bind="character[prop] || '-'"></div>
+          </td>
+      </tbody>
+      <!-- end of characters listing body -->
+    </table>
+  </div>
+  <!-- characters listing -->
+
+  <!-- no results container -->
+  <div class="table-container" ng-if="error">
+    <p class="simple-text" ng-bind="error"></p>
+  </div>
+  <!-- end of no results container -->
+
+  <!-- characters listing footer - paging -->
+  <ng-include src="'/templates/paging.html'"></ng-include>
+  <!-- end of characters listing footer - paging -->
+
+</section>

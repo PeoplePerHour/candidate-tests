@@ -1,0 +1,12 @@
+<div class="filtering-container custom-select">
+  <button type="button" class="btn clear-btn" ng-click="select(1,'','','');" ng-if="selectedgender||selectedspecies||selectedstatus">CLEAR</button>
+  <select class="dropdown" ng-model="selectedgender" ng-selected="selectedgender" ng-options="gender for gender in genders" ng-change="select(1,selectedgender,selectedspecies,selectedstatus)">
+    <option value>Filter by gender</option>
+  </select>
+  <select class="dropdown" ng-model="selectedspecies" ng-selected="selectedspecies" ng-options="species for species in species" ng-change="select(1,selectedgender,selectedspecies,selectedstatus)">
+    <option value>Filter by species</option>
+  </select>
+  <select class="dropdown" ng-model="selectedstatus" ng-selected="selectedstatus" ng-options="status for status in status" ng-change="select(1,selectedgender,selectedspecies,selectedstatus)">
+    <option value>Filter by status</option>
+  </select>
+</div>

@@ -1,0 +1,5 @@
+<div class="paging-container" ng-if="pages>1">
+  <button type="button" class="btn" ng-click="page = page-1; select(page,selectedgender,selectedspecies,selectedstatus);" ng-disabled="page<2">PREVIOUS</button>
+  <div class="simple-text" ng-bind="'Page '+(page||1)+' / '+pages"></div>
+  <button type="button" class="btn" ng-click="page = page+1; select(page,selectedgender,selectedspecies,selectedstatus);" ng-disabled="page>=pages">NEXT</button>
+</div>

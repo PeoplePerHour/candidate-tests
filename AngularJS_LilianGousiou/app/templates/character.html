@@ -1,0 +1,31 @@
+<!-- character modal container -->
+<div class="character-info-container" ng-style="{'background-image':'url({{singlecharacter.image}})'}">
+
+  <div class="character-info">
+
+    <!-- character modal header -->
+    <div class="character-info-header">
+      <h3 class="character-name" ng-bind="singlecharacter.name"></h3>
+      <button aria-label="Dismiss" class="ngdialog-close" ng-click="ngDialog.close()"></button>
+    </div>
+    <!-- end of character modal header -->
+
+    <!-- display character info -->
+    <div class="character-info-row" ng-repeat="prop in thead" ng-switch on="prop" ng-if="prop!='name' && singlecharacter.prop!=''">
+      <div ng-bind="prop+':'" class="character-prop"></div>
+      <div ng-switch-when="location|origin" ng-switch-when-separator="|" ng-bind="singlecharacter[prop].name" class="character-prop-value"></div>
+      <div ng-switch-when="created" ng-bind="singlecharacter.created | date:'h:mma dd/MM/yyyy'" class="character-prop-value"></div>
+      <div ng-switch-default ng-bind="singlecharacter[prop] || '-'" class="character-prop-value"></div>
+    </div>
+    <div class="character-info-row" ng-show="singlecharacter.newepisode.length>0">
+      <div class="character-prop">Episodes:</div>
+      <div class="character-episodes character-prop-value">
+        <div ng-repeat="episode in singlecharacter.newepisode" ng-show="episode">{{episode.name}} ({{episode.episode}})</div>
+      </div>
+    </div>
+    <!-- end of display character info -->
+
+  </div>
+
+</div>
+<!-- end of character modal container -->

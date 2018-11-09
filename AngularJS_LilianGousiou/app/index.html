@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+      <base href="/">
+      <meta charset="UTF-8" />
+      <title>Peopleperhour Task</title>
+      <link href="./favicon.ico" rel="shortcut icon">
+      <link href="./css/style.css" rel="stylesheet">
+      <link href="./css/ngDialog.css" rel="stylesheet">
+  </head>
+
+  <body ng-app="PeoplePerHour">
+
+    <!-- includes the rendered template of the current route into the main layout file -->
+    <ng-view autoscroll="true"></ng-view>
+
+    <!-- webpack js output depended on index.js -->
+    <script src="./bundle.js"></script>
+
+  </body>
+
+</html>

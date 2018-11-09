@@ -1,0 +1,31 @@
+{
+  "name": "webpack-angular",
+  "version": "1.0.0",
+  "description": "Peopleperhour frontend project - Lilian Gousiou",
+  "main": "app/index.js",
+  "repository": "https://github.com/evangous/angularjs-webpack.git",
+  "scripts": {
+    "browse": "angular-http-server --config angular-http-server.config.js",
+    "start": "node node_modules/.bin/webpack-dev-server --content-base app",
+    "dev": "webpack --mode development",
+    "build": "NODE_ENV=development node node_modules/.bin/webpack && cp app/index.html"
+  },
+  "keywords": [
+    "webpack",
+    "angular"
+  ],
+  "author": "Lilian Gousiou",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^4.25.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10"
+  },
+  "dependencies": {
+    "angular": "^1.6.9",
+    "angular-http-server": "^1.7.0",
+    "angular-route": "^1.7.5",
+    "ng-dialog": "^1.4.0",
+    "ng-resource": "^1.3.2"
+  }
+}
