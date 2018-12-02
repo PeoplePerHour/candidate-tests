@@ -1,0 +1,33 @@
+{
+    "name": "nikos/candidate-tests",
+    "description": "People per hour test",
+    "authors": [
+        {
+            "name": "maznick",
+            "email": "nikosdmazarakis@gmail.com"
+        }
+    ],
+    "config": {
+        "platform": {
+            "php": "7.2.12"
+        }
+    },
+    "require": {
+        "doctrine/dbal": "^2.8",
+        "webmozart/assert": "^1.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.4",
+        "mockery/mockery": "^1.2"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\Unit\\": "tests/Unit/"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Models\\": "models"
+        }
+    }
+}
