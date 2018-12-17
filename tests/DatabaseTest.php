@@ -18,9 +18,6 @@ class DatabaseTest extends TestCase {
         $this->dbName = "testDB";
         $this->table = "testTable";
 
-        // First create db: testDB
-//        $this->createTestDatabase();
-
         // Make the connection (mysql)
         $dsn = "mysql:dbname=testDB;host=127.0.0.1";
         $configuration = new DBConfiguration($dsn, "root", "chr1\$t0$");
@@ -45,9 +42,18 @@ class DatabaseTest extends TestCase {
     }
 
     public function testInsert() {
-
         $this->assertTrue($this->db->insert($this->table,
-            array('name' => 'username')));
+            array('name' => 'name1')));
+        $this->assertTrue($this->db->insert($this->table,
+            array('name' => 'name2')));
+    }
+
+    public function testSelect() {
+        $this->assertEquals(1, sizeof($this->db->select($this->table, ["id", "name"], array("id" => 1))));
+    }
+
+    public function testDelete() {
+        $this->assertTrue($this->db->delete($this->table, array("id" => 1)));
     }
 
     protected function prepareTestTable() {

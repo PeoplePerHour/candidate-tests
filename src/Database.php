@@ -2,14 +2,31 @@
 
 namespace CT\DBConnectionManager;
 
+use CT\DBConnectionManager\Cache\CacheInterface;
+use PDO;
+use PDOStatement;
+
 /**
  * Class Database
  * @package CT\DBConnectionManager
  */
 class Database extends AbstractDatabase implements CRUDInterface {
 
-    public function select(string $table, array $params) {
-        // TODO: Implement select() method.
+    protected $cache;
+
+    public function select(string $table, array $params, array $options) {
+
+
+
+        $column = array_keys($options)[0];
+
+        $query = 'SELECT '.  implode(',', $params) .' FROM '. $table . ' WHERE ' . $column . '=?';
+
+        // Prepare statement
+        $pdoStatement = $this->getPdo()->prepare($query);
+        // Execute
+        $pdoStatement->execute($options[$column]);
+        return $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function insert(string $table, array $params): bool {
@@ -74,13 +91,41 @@ class Database extends AbstractDatabase implements CRUDInterface {
         $this->pdo->rollBack();
     }
 
+    public function setCacheProvider(CacheInterface $cache) {
+        $this->cache = $cache;
+    }
+
+    public function getCacheProvider(): CacheInterface {
+        return $this->cache;
+    }
+
+    protected function isCacheEnabled(): bool {
+        return is_object($this->cache)? true: false;
+    }
+
+    protected function saveQueryToCache($params, $options, $value) {
+
+        if ($this->isCacheEnabled()) {
+            $key = md5(json_decode($params).json_encode($options));
+            $this->getCacheProvider()->set($key, $value);
+        }
+
+    }
+
+    protected function getCachedResult($params, $options) {
+
+        if ($this->isCacheEnabled()) {
+            $key = md5(json_decode($params).json_encode($options));
+            return $this->getCacheProvider()->get($key);
+        }
+    }
+
     /**
      * @param $query
      * @param $values
-     * @param bool $cache
      * @return \PDOStatement
      */
-    protected function execute($query, $values, $cache = false) {
+    protected function execute($query, $values) {
 
         // Prepare statement
         $pdoStatement = $this->getPdo()->prepare($query);
