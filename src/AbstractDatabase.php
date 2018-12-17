@@ -3,7 +3,6 @@
 namespace CT\DBConnectionManager;
 
 use PDO;
-use PDOStatement;
 
 /**
  * Class AbstractDatabase
@@ -32,7 +31,7 @@ abstract class AbstractDatabase {
     }
 
     public abstract function isConnected(): bool;
-    public abstract function executeQuery($query): PDOStatement;
+    public abstract function executeQuery($query);
     public abstract function commit();
     public abstract function rollback();
 

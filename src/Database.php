@@ -57,7 +57,7 @@ class Database extends AbstractDatabase implements CRUDInterface {
         return is_object($this->pdo)? true: false;
     }
 
-    public function executeQuery($query): PDOStatement {
+    public function executeQuery($query) {
 
         // Prepare statement
         $pdoStatement = $this->getPdo()->prepare($query);
@@ -75,13 +75,12 @@ class Database extends AbstractDatabase implements CRUDInterface {
     }
 
     /**
-     *
      * @param $query
      * @param $values
      * @param bool $cache
-     * @return PDOStatement
+     * @return \PDOStatement
      */
-    protected function execute($query, $values, $cache = false): PDOStatement {
+    protected function execute($query, $values, $cache = false) {
 
         // Prepare statement
         $pdoStatement = $this->getPdo()->prepare($query);

@@ -10,15 +10,20 @@ use PHPUnit\Framework\TestCase;
 class DatabaseTest extends TestCase {
 
     public $db;
+    private $dbName;
     private $table;
 
     protected function setUp() {
 
+        $this->dbName = "testDB";
         $this->table = "testTable";
 
+        // First create db: testDB
+//        $this->createTestDatabase();
+
         // Make the connection (mysql)
-        $dsn = "mysql:dbname=testdb;host=127.0.0.1";
-        $configuration = new DBConfiguration($dsn, "dummy", "dummy");
+        $dsn = "mysql:dbname=testDB;host=127.0.0.1";
+        $configuration = new DBConfiguration($dsn, "root", "chr1\$t0$");
 
         $pdo = DBFactory::createDBConnection($configuration);
         $this->db = new Database($pdo);
@@ -37,6 +42,12 @@ class DatabaseTest extends TestCase {
 
     public function testIsConnected() {
         $this->assertTrue($this->db->isConnected(), "Database is not connected");
+    }
+
+    public function testInsert() {
+
+        $this->assertTrue($this->db->insert($this->table,
+            array('name' => 'username')));
     }
 
     protected function prepareTestTable() {
