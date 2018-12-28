@@ -15,7 +15,7 @@ class DBConfiguration {
     private $persistent;
 
     public function __construct(string $dsn, string $username, string $password,
-                                string $charset = 'urf8', bool $persistent = false) {
+                                string $charset = 'utf8', bool $persistent = false) {
         $this->dsn = $dsn;
         $this->username = $username;
         $this->password = $password;
