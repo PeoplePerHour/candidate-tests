@@ -1,0 +1,132 @@
+$zeropadding: 0;
+$zeromargin: 0;
+$break-small: 510px;
+$green: #2ecc71;
+$gray: #444;
+$orange: #ff9800;
+$blue: #03a9f4;
+
+$darken: darken($gray, 20%);
+
+body {
+  background-color: $darken;
+  font-family: "Maven Pro", sans-serif;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+
+a {
+  text-decoration: none;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(rgb(200, 16, 16), 0.2);
+  height: 100vh;
+}
+.Logo {
+  max-width: 100px;
+}
+.centeredContent {
+  padding: 20px;
+  margin: 10px;
+}
+.CardTitle {
+  font-size: 1rem;
+  margin: 0;
+  color: $orange;
+}
+
+.Card {
+  width: 20rem;
+  background-color: $gray;
+}
+
+.ColNoSpacing {
+  padding: $zeropadding;
+  flex-grow: 0;
+}
+
+.NoMargin {
+  margin: $zeromargin;
+}
+
+.RowCenterItems {
+  justify-content: center;
+}
+.Centered {
+  text-align: center;
+}
+
+.Btn__orange {
+  color: white;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: rgba($orange, 0.3);
+  border: solid 0.1rem $orange;
+  margin: 8px;
+
+  &:hover {
+    cursor: pointer;
+    background-color: rgba($orange, 0.3);
+    box-shadow: 0px 0px 5px 1px $orange;
+  }
+}
+
+.Btn__blue {
+  color: white;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: rgba($blue, 0.3);
+  border: solid 0.1rem $blue;
+  margin: 8px;
+
+  &:hover {
+    cursor: pointer;
+    background-color: rgba($blue, 0.3);
+    box-shadow: 0px 0px 5px 1px $blue;
+  }
+}
+
+.ModalDark {
+  background-color: $gray;
+}
+.ModalTitle {
+  justify-content: center !important;
+  border-bottom: 1px solid rgba($orange,0.3);
+}
+.ModalContent {
+  margin: 1%;
+  width: calc(96% / 2);
+  border-radius: 7px;
+  text-align: left;
+  padding: 10px 0;
+  float: left;
+  
+
+  @media only screen and (max-width: 425px) {
+    width: 100%;
+    text-align: center;
+  }
+}
+.ModalListItem {
+  background-color: $gray;
+  color: $orange;
+}
+.pagingBtn {
+  margin: 0.5rem;
+}
+
+.BadgeContent {
+  background-color: $orange;
+  white-space: normal;
+}
