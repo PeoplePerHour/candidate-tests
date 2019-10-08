@@ -1,0 +1,39 @@
+// Prev-Next
+
+.prevNext {
+    background: rgb(83, 77, 66);
+    width: 150px;
+    margin: 10px auto 30px auto;
+    border: solid 1px rgb(43, 38, 38);
+    border-radius: 8px;
+    align-items: center;
+    padding: 10px;
+}
+
+.prev-b {
+    background: rgb(231, 226, 221);
+    color: rgb(102, 102, 102);
+    border: solid 1px rgb(80, 80, 80);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding: 5px 10px;
+}
+
+.prev-b:hover {
+    background: rgb(177, 177, 176);
+    color: rgb(236, 230, 230);
+}
+
+.next-b {
+    background: rgb(54, 54, 54);
+    color: rgb(245, 238, 238);
+    border: solid 1px lightgray;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 5px 11px;
+}
+
+.next-b:hover {
+    background: rgb(194, 194, 194);
+    color: rgb(95, 95, 95);
+}

@@ -1,0 +1,66 @@
+.filter-all {
+  background: #534d42;
+  width: 350px;
+  margin: 20px auto;
+  border: solid 1px #383232;
+  border-radius: 5px;
+  padding: 20px 30px 20px 30px;
+}
+
+.dropdowns {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 100px 100px 100px;
+      grid-template-columns: 100px 100px 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.drop-gender,
+.drop-status,
+.drop-species {
+  background: #cebb99;
+  border: solid 1px #685f4f;
+  border-radius: 5px;
+  padding: 5px 0;
+  margin: 2px;
+  display: block;
+}
+
+.drop-species {
+  width: 100px;
+}
+
+.filter-text {
+  color: #e7c88e;
+  text-align: center;
+}
+
+.filter-i {
+  display: inline;
+  margin-right: 8px;
+}
+
+.filters {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 120px 200px;
+      grid-template-columns: 120px 200px;
+  margin: 10px;
+  padding-left: 10px;
+}
+
+.filter-btn {
+  margin: auto !important;
+  background: #c9c3c3 !important;
+}
+
+.clear-btn {
+  background: #ddb6b6 !important;
+  margin-left: 10px !important;
+}
+/*# sourceMappingURL=Dropdowns_Filters.css.map */

@@ -1,0 +1,40 @@
+.prevNext {
+  background: #534d42;
+  width: 150px;
+  margin: 10px auto 30px auto;
+  border: solid 1px #2b2626;
+  border-radius: 8px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px;
+}
+
+.prev-b {
+  background: #e7e2dd;
+  color: #666666;
+  border: solid 1px #505050;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  padding: 5px 10px;
+}
+
+.prev-b:hover {
+  background: #b1b1b0;
+  color: #ece6e6;
+}
+
+.next-b {
+  background: #363636;
+  color: #f5eeee;
+  border: solid 1px lightgray;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 5px 11px;
+}
+
+.next-b:hover {
+  background: #c2c2c2;
+  color: #5f5f5f;
+}
+/*# sourceMappingURL=PrevNext_Buttons.css.map */

@@ -1,0 +1,51 @@
+// Popup 
+
+.pop-container {
+    background: rgb(83, 71, 62);
+    overflow: scroll;
+    height: 400px;
+    width: 250px;
+    margin: -7px;
+    padding: 15px;
+    word-wrap: break-word;
+    border: solid 1px rgb(27, 25, 25);
+}
+
+.pop-name {
+    text-align: center;
+    padding-bottom: 10px;
+    color: rgb(235, 198, 142);
+}
+
+.pop-img {
+    display: block;
+    margin: auto;
+    width: 8em;
+    padding-bottom: 20px;
+}
+
+.meta-title {
+    text-align: center;
+    padding-bottom: 10px;
+    color: rgb(235, 198, 142);
+}
+
+.pbol {
+    color: rgb(231, 200, 142);
+}
+
+.pital {
+    color: rgb(236, 225, 203);
+}
+
+// Loading
+
+.loading {
+    text-align: center;
+    background: rgb(83, 71, 62);
+    color: rgb(235, 198, 142);
+    margin: -7px;
+    padding: 15px 15px;
+    padding-right: 20px;
+    font-size: 20px;
+}

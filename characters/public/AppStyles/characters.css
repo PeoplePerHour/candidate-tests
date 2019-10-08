@@ -1,0 +1,46 @@
+.item {
+  border: solid 1px black;
+  background-color: #292725;
+  padding: 2px;
+}
+
+.name {
+  background-color: #1f1e1c;
+  margin: 0;
+  padding: 4px;
+  text-align: center;
+  color: #e7c88e;
+  height: 60px;
+}
+
+.cimg {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header {
+  background-color: #ecc375;
+  margin: 0;
+  padding: 5px;
+  text-align: center;
+  border-bottom: solid 1px #443e3e;
+}
+
+.meta {
+  background-color: #36332f;
+  margin: 4px;
+  padding: 7px;
+  color: #eee4d3;
+  display: none;
+}
+
+.meta-items {
+  border-bottom: solid 1px #46403d;
+  padding-bottom: 6px;
+}
+
+.bol {
+  color: #e7c88e;
+}
+/*# sourceMappingURL=characters.css.map */

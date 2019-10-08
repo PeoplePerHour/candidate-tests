@@ -1,0 +1,48 @@
+.pop-container {
+  background: #53473e;
+  overflow: scroll;
+  height: 400px;
+  width: 250px;
+  margin: -7px;
+  padding: 15px;
+  word-wrap: break-word;
+  border: solid 1px #1b1919;
+}
+
+.pop-name {
+  text-align: center;
+  padding-bottom: 10px;
+  color: #ebc68e;
+}
+
+.pop-img {
+  display: block;
+  margin: auto;
+  width: 8em;
+  padding-bottom: 20px;
+}
+
+.meta-title {
+  text-align: center;
+  padding-bottom: 10px;
+  color: #ebc68e;
+}
+
+.pbol {
+  color: #e7c88e;
+}
+
+.pital {
+  color: #ece1cb;
+}
+
+.loading {
+  text-align: center;
+  background: #53473e;
+  color: #ebc68e;
+  margin: -7px;
+  padding: 15px 15px;
+  padding-right: 20px;
+  font-size: 20px;
+}
+/*# sourceMappingURL=Popup.css.map */

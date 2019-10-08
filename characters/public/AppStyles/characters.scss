@@ -1,0 +1,48 @@
+// Characters list
+
+.item {
+    border: solid 1px rgb(0, 0, 0);
+    background-color: rgb(41, 39, 37);
+    padding: 2px;
+}
+
+.name {
+    background-color: rgb(31, 30, 28);
+    margin: 0;
+    padding: 4px;
+    text-align: center;
+    color: rgb(231, 200, 142);
+    height: 60px;
+}
+
+.cimg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header {
+    background-color: rgb(236, 195, 117);
+    margin: 0;
+    padding: 5px;
+    text-align: center;
+    border-bottom: solid 1px rgb(68, 62, 62);
+}
+
+.meta {
+    background-color: rgb(54, 51, 47);
+    margin: 4px;
+    padding: 7px;
+    color: rgb(238, 228, 211);
+    display: none;
+}
+
+.meta-items {
+    border-bottom: solid 1px rgb(70, 64, 61);
+    padding-bottom: 6px;
+}
+
+.bol {
+
+    color: rgb(231, 200, 142);
+}

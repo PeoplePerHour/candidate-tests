@@ -1,0 +1,62 @@
+// Dropdowns
+
+.filter-all {
+    background: rgb(83, 77, 66);
+    width: 350px;
+    margin: 20px auto;
+    border: solid 1px rgb(56, 50, 50);
+    border-radius: 5px;
+    padding: 20px 30px 20px 30px;
+}
+
+.dropdowns {
+    display: grid;
+    grid-template-columns: 100px 100px 100px;
+    display: flex;
+    align-items: center
+}
+
+.drop-gender,
+.drop-status,
+.drop-species {
+    background: rgb(206, 187, 153);
+    border: solid 1px rgb(104, 95, 79);
+    border-radius: 5px;
+    padding: 5px 0;
+    margin: 2px;
+    display: block;
+
+}
+
+.drop-species {
+    width: 100px;
+}
+
+// Filters
+
+.filter-text {
+    color: rgb(231, 200, 142);
+    text-align: center;
+}
+
+.filter-i {
+    display: inline;
+    margin-right: 8px;
+}
+
+.filters {
+    display: grid;
+    grid-template-columns: 120px 200px;
+    margin: 10px;
+    padding-left: 10px;
+}
+
+.filter-btn {
+    margin: auto !important;
+    background: rgb(201, 195, 195) !important;
+}
+
+.clear-btn {
+    background: rgb(221, 182, 182) !important;
+    margin-left: 10px !important;
+}

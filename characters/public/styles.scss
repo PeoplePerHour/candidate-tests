@@ -1,0 +1,32 @@
+@import './AppStyles/characters.scss';
+@import './AppStyles/PrevNext_Buttons.scss';
+@import './AppStyles/Dropdowns_Filters.scss';
+@import './AppStyles/Popup.scss';
+
+$background-color: rgb(49, 46, 46);
+
+#root {
+	background: $background-color;
+}
+
+.title {
+	padding-top: 50px;
+	font-size: 50px;
+	text-align: center;
+	font-family: "Permanent Marker", cursive;
+	color: orange;
+}
+
+.content {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	grid-gap: 10px;
+	grid-auto-rows: minmax(100px, auto);
+	max-width: 1200px;
+	margin: 20px auto;
+	padding-top: 30px;
+}
+
+.bottom-div {
+	height: 100px;
+}
