@@ -1,6 +1,7 @@
 # Candidate tests
 - [Frontend test project](README-FRONTEND.md)
 - [Backend test project](README-BACKEND.md)
+- [Backend API test](README-BE-WEATHER.md)
 
 ### Process
 
