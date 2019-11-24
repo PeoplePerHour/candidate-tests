@@ -1,42 +1,56 @@
-# Candidate tests
-- [Frontend test project](README-FRONTEND.md)
-- [Backend test project](README-BACKEND.md)
-- [Backend API test](README-BE-WEATHER.md)
+# PPH Weather Forecast Test
+The test app was developed in Lumen Framework v6.0, using PHP 7.2.
+Lumen framework was chosen because it is small (micro) framework and close 
+to Laravel that your Company is moving into. 
 
-### Process
+## Design Overview
+Two design patterns were used ([Strategy](https://en.wikipedia.org/wiki/Strategy_pattern) 
+and [Registry](https://martinfowler.com/eaaCatalog/registry.html)) in order
+to manage the dynamic selection of provider during the request. 
+Implementation wise an Interface has been introduced in order support both the dynamic provider change
+and to allow more providers to be implemented inf the future. 
 
-Fork this repo, and clone it on your local environment <br />
-`git clone git@github.com:<your-github-username>/candidate-tests.git`
-<br />
-<br />
-Enter the created folder<br />
-`cd ./candidate-tests`
-<br />
-<br />
-Create a branch named after your fullname <br/>
-`git checkout -b yourfullname`
-<br />
-<br />
-When you are done please commit your code and push your branch
-<br />
-```
-git add . 
-git commit -m 'Enter your commit comment here'
-git push origin yourfullname
-```
-<br />
-<br />
-And then create a pull request from your repository `<your-github-username>/candidate-tests` branch to `PeoplePerHour/candidate-tests/master` branch.
-<br />
-Just don't forget to send us a message that you have committed your code.
+Important Files Introduced:
+ - **Controllers**  => Holding The controller to validate the request and call the service
+ - **Providers** => Register the Provider being used
+ - **Service** => The Weather Service implementation holding the interface and the providers implementation
+ - **Config** => Holds the config keys for the available providers call
+ - **tests** => Hold the units tests of the app.
+ 
+ `
+ - app/Http/Controllers/WeatherController.php
+ - app/Providers/WeatherProvider.php
+ - app/Services/WeatherService/*
+ - config/provider.php
+ - routes/web.php
+ - tests
+ `
 
-### Things to avoid
-- Long PRs, code must be as simpler as it could be.
-- Over-complicated
-- Over-engineered
-- Copy-pasting code from other libraries, without fully understanding what it does.
-- Not asking for clarification. If something is unclear please go ahead and ask us.
+## Completed Tasks
+- Provide Interface to add more provider if needed
+- Input Validation
+- Dockerized
+- Unit Tests (Controller coverage only due to lack of time - Showcase Mocking though)
+- API Responses follow JSON API specification.
+- Coding Standards PSR-1 & PSR12 were followed
+- Postman Collection provided
 
-**Important Note**: If you need any clarification, please create a new issue and we will respond asap.
+## Things to Note
+[Issue](https://github.com/guzzle/guzzle/issues/1432) with Guzzle 6.* when the response from the provider 
+comes back with status code 204. Documented on the code as well.
 
-## Do your magic!
+## How to Run
+ - git clone https://github.com/St-Gk/candidate-tests.git
+ - cd candidate-tests
+ - docker build -f Dockerfile -t pph-weather .
+ - docker run -p 8000:8000 pph-weather
+ - Import Postman Collection found in: _./postman/PPH-Weather.postman_collection.json_
+  to call the API on [http://localhost:8000/weather](http://localhost:8000/weather)
+  
+###Available Params for the request:
+  1. **location** -> Required. Name of the city to forecast the weather
+  2. **unit** -> Required. Accepts Only: [**Celsius** or **Fahrenheit**]
+  3. **provider**  -> Optional. Accepts Only: [**OpenWeatherProvider** or **WeatherBitProvider**]
+
+
+

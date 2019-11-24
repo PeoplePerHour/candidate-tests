@@ -1,0 +1,56 @@
+{
+	"info": {
+		"_postman_id": "a477fe2d-08e0-41bc-8e9f-4fedc83e0367",
+		"name": "PPH-Weather",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "WeatherForecast",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "location",
+							"value": "Athens",
+							"type": "text"
+						},
+						{
+							"key": "unit",
+							"value": "Celsius",
+							"type": "text"
+						},
+						{
+							"key": "provider",
+							"value": "OpenWeatherProvider",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/weather",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"weather"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
