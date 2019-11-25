@@ -1,0 +1,5 @@
+<?
+return[
+    "Fahrenheit"=>"F",
+    "Cel"
+];
