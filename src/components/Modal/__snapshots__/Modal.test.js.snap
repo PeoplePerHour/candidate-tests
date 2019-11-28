@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Modal without crashing 1`] = `
+<div
+  class="modal"
+  style="display: none;"
+>
+  <div
+    class="modal-content"
+  >
+    <span
+      class="close"
+    >
+      ×
+    </span>
+    <div>
+      <div
+        class="modal-flex"
+      />
+    </div>
+  </div>
+  <div
+    class="modal-background"
+  />
+</div>
+`;

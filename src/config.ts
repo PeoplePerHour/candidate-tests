@@ -1,0 +1,1 @@
+export const appUrl:string = 'https://rickandmortyapi.com/api/'

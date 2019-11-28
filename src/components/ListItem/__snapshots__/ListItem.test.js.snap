@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Lisitem without crashing 1`] = `
+<li
+  class="m-2"
+>
+  <div
+    class="d-flex fd-col fa-center card"
+  >
+    <div>
+      <h1 />
+    </div>
+    <img
+      alt=""
+    />
+    <h3>
+      Gender: 
+    </h3>
+    <h3>
+      Status: 
+    </h3>
+    <h3>
+      Species: 
+    </h3>
+  </div>
+</li>
+`;

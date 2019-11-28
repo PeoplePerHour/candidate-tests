@@ -1,0 +1,77 @@
+.title {
+  text-align: center;
+  padding: 1rem;
+  font-weight: bold;
+}
+.controls {
+  flex-wrap: wrap;
+  width: 100%;
+  margin: auto;
+  max-width: 1000px;
+  align-items: center;
+  justify-content: center;
+}
+.btn {
+  font-size: 1.5rem;
+  background: white;
+  border: white;
+  border-radius: 5px;
+  padding: 5px;
+  max-width: 68px;
+  width: 100%;
+  text-align: center;
+  color: $primary-color;
+  margin: 1rem;
+  font-weight: bold;
+}
+.btn:disabled {
+  background: #dddddd;
+  cursor: not-allowed;
+}
+
+.list-container {
+  .react-select-container {
+    width: 200px;
+    margin: 1rem;
+  }
+  .react-select__option {
+    color: $secontary-color;
+  }
+  .react-select__option:hover {
+    color: $third-color;
+    background:  $secontary-color;
+  }
+  .react-select__menu-list {
+    max-height: 300px;
+    overflow-y: auto;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
+    background: #375e9a;
+  }
+  .list {
+    max-width: 1750px;
+    overflow: auto;
+    height: calc(100vh - 15rem);
+    margin-top: 1rem;
+    justify-content: center;
+  }
+  .card {
+    padding: 1rem;
+    background: #375e9a;
+    color: #ffff00;
+    max-width: 220px;
+    border-radius: 25px;
+    cursor: pointer;
+    margin: auto;
+    width: 100%;
+    text-align: center;
+  }
+  .card:hover {
+    opacity: 0.8;
+    transition: 300ms ease-out;
+    border: 5px solid #8e7dd1;
+  }
+}

@@ -1,0 +1,116 @@
+@import "config";
+@import "fonts";
+@import "list";
+@import "modal";
+
+//Resets
+body * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+a {
+  text-decoration: none;
+  color: $primary-color;
+}
+
+ul {
+  list-style: none;
+}
+img {
+  max-width: 200px;
+  width: 100%;
+}
+
+body {
+  color: $secontary-color;
+  background-color: $primary-color;
+  font-family: "Coming Soon", cursive;
+  font-size: 1rem;
+  overflow: hidden;
+}
+
+ul {
+  // display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+}
+ul li {
+  img {
+    margin: 10px 0;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+}
+
+.p404 {
+  text-align: center;
+
+  img {
+    max-width: 600px;
+  }
+  button{
+    max-width: 200px;
+    cursor: pointer;
+  }
+}
+.select-dd {
+  max-width: 185px;
+  margin: 1px;
+  position: relative;
+  z-index: 5;
+  width: 100%;
+
+
+ .show {
+  display: block;
+}
+ .hide {
+  display: none;
+}
+
+ span {
+  background: #ffff;
+  color: #000;
+  display: block;
+  padding: 5px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  width: 100%;
+  text-align: center;
+}
+
+
+  ul {
+    margin-top: 5px;
+    display: block;
+    display: block;
+    position: absolute;
+    width:100%;
+    background: white;
+    padding: 4px;
+    border-radius: 5px;
+  }
+
+  ul li {
+    margin: 5px 0;
+  }
+  ul a {
+    display: block;
+    background: #375e9a;
+    text-align: center;
+    color: $secontary-color;
+  }
+}
+.details ul{
+  max-height: 150px;
+  overflow: auto;
+}
+
+
+
+
+@import "mediaq";

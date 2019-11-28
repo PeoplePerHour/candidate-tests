@@ -1,0 +1,56 @@
+$primary-color: #8e7dd1;
+$secontary-color: yellow;
+$third-color: #000;
+$max-width: 1100px;
+
+// Margin & Padding
+$spaceamounts: (1, 2, 3, 4, 5, "auto");
+
+@each $space in $spaceamounts {
+   //Auto margin
+   .m-#{$space} {
+    margin: auto;
+  }
+  // All around margin
+  .m-#{$space} {
+    margin: #{$space}rem;
+  }
+
+  // Vertical Margin
+  .my-#{$space} {
+    margin: #{$space}rem 0;
+  }
+
+  // All around Padding
+  .p-#{$space} {
+    padding: #{$space}rem;
+  }
+
+  // Vertical Padding
+  .py-#{$space} {
+    padding: #{$space}rem 0;
+  }
+
+ 
+}
+
+// flex
+
+$flexprops: ("flex", "wrap", "center","col");
+
+@each $prop in $flexprops {
+  .d-#{$prop} {
+    display: flex;
+  }
+  .fd-#{$prop} {
+    flex-direction: column;
+  }
+  .f-#{$prop} {
+    flex-wrap: wrap;
+  }
+
+  .fa-#{$prop} {
+    align-items: center;
+  }
+ 
+}

@@ -1,0 +1,164 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders without crashing 1`] = `
+<div>
+  <div>
+    <div
+      class="d-flex"
+    />
+    <h1
+      class="title"
+    >
+      Rick and Morty
+    </h1>
+    <div
+      class="list-container d-flex fd-col fa-center"
+    >
+      <div
+        class="d-flex controls "
+      >
+        <button
+          class="btn"
+        >
+          Prev
+        </button>
+        <div
+          class="select-dd"
+        >
+          <span>
+            Select Species
+          </span>
+          <ul
+            class="hide"
+          >
+            <li>
+              <a
+                href="#"
+              >
+                Select Species
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div
+          class="select-dd"
+        >
+          <span>
+            Select Status
+          </span>
+          <ul
+            class="hide"
+          >
+            <li>
+              <a
+                href="#"
+              >
+                Select Status
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+              >
+                alive
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+              >
+                dead
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+              >
+                unknown
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div
+          class="select-dd"
+        >
+          <span>
+            Select Gender
+          </span>
+          <ul
+            class="hide"
+          >
+            <li>
+              <a
+                href="#"
+              >
+                Select Gender
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+              >
+                female
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+              >
+                male
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+              >
+                genderless
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+              >
+                unknown
+              </a>
+            </li>
+          </ul>
+        </div>
+        <button
+          class="btn"
+        >
+          Next
+        </button>
+      </div>
+      <div>
+        <ul
+          class="d-flex fa-center m-auto list"
+        />
+      </div>
+    </div>
+    <div
+      class="modal"
+      style="display: none;"
+    >
+      <div
+        class="modal-content"
+      >
+        <span
+          class="close"
+        >
+          ×
+        </span>
+        <div>
+          <div
+            class="modal-flex"
+          />
+        </div>
+      </div>
+      <div
+        class="modal-background"
+      />
+    </div>
+  </div>
+</div>
+`;
