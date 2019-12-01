@@ -1,0 +1,78 @@
+{
+	"info": {
+		"_postman_id": "ffab76ee-c276-423c-aef1-4182b49a8932",
+		"name": "pph-proj",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "weather-search",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/weather?location=Athens,GR&units=Celsius&provider=OpenWeather",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"weather"
+					],
+					"query": [
+						{
+							"key": "location",
+							"value": "Athens,GR"
+						},
+						{
+							"key": "units",
+							"value": "Celsius"
+						},
+						{
+							"key": "provider",
+							"value": "OpenWeather"
+						}
+					]
+				},
+				"description": "a simple endpoint to fetch temperatures"
+			},
+			"response": []
+		},
+		{
+			"name": "JsonAPI weather search",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/jsonapi/forecast?include=unitType&filter[location][eq]=Athens,GR&filter[unitType][name][eq]=Celsius",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jsonapi",
+						"forecast"
+					],
+					"query": [
+						{
+							"key": "include",
+							"value": "unitType"
+						},
+						{
+							"key": "filter[location][eq]",
+							"value": "Athens,GR"
+						},
+						{
+							"key": "filter[unitType][name][eq]",
+							"value": "Celsius"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
