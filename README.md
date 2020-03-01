@@ -2,7 +2,7 @@
 
 ## Install
  + Download project from GitHub.
- + Open in the generated folder the terminal and run `npm install`.
+ + Open the Project folder in terminal and run `npm install`.
 
 ## Run
  + Open the Project folder in terminal and run `npm start`. This action will open your default browser to this address: `http://localhost:9376`.

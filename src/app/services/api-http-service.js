@@ -10,10 +10,14 @@ function createUrl(apiEndpoint, apiAction, queryStrings) {
 function createQueryParameters(queryStrings) {
   const paramsAndValues = [];
   queryStrings.forEach((queryString) => {
-    Object.keys(queryString).forEach((key) => {
-      const value = encodeURIComponent(queryString[key].toString());
-      paramsAndValues.push([key, value].join('='));
-    });
+    if (queryString) {
+      Object.keys(queryString).forEach((key) => {
+        if (key) {
+          const value = encodeURIComponent(queryString[key].toString());
+          paramsAndValues.push([key, value].join('='));
+        }
+      });
+    }
   });
   return paramsAndValues.join('&');
 }
@@ -37,16 +41,17 @@ function apiHttpGet(apiCallUrl) {
 }
 /* #endregion */
 
-function getCharactersList(page) {
-  const queryStrings = createQueryParameters([{ page }]);
+export default function getCharactersList(page, filters) {
+  let queryStrings;
+  if (filters) {
+    queryStrings = createQueryParameters([
+      { page },
+      ...(filters.gender && { gender: filters.gender }),
+      ...(filters.status && { status: filters.status }),
+    ]);
+  } else {
+    queryStrings = createQueryParameters([{ page }]);
+  }
   const apiUrl = createUrl(Constants.API_ENDPOINT, 'character', queryStrings);
   return apiHttpGet(apiUrl);
 }
-
-function getCharacterDetail(page) {
-  const queryStrings = createQueryParameters([{ page }]);
-  const apiUrl = createUrl(Constants.API_ENDPOINT, 'character', queryStrings);
-  return apiHttpGet(apiUrl);
-}
-
-export { getCharactersList, getCharacterDetail };

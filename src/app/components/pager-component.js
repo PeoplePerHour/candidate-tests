@@ -18,7 +18,7 @@ export default function intializePagerComponent(charactersPages, loadCharactersL
   prevButtonEL.textContent = 'PREVIOUS';
   if (charactersPages.prev) {
     prevButtonEL.className = 'btn';
-    prevButtonEL.addEventListener('click', () => loadCharactersList(getPageNumber(charactersPages.prev)));
+    prevButtonEL.addEventListener('click', () => loadCharactersList(getPageNumber(charactersPages.prev)), null);
   } else {
     prevButtonEL.className = 'btn btn-disabled';
   }
@@ -28,7 +28,7 @@ export default function intializePagerComponent(charactersPages, loadCharactersL
   nextButtonEL.textContent = 'NEXT';
   if (charactersPages.next) {
     nextButtonEL.className = 'btn';
-    nextButtonEL.addEventListener('click', () => loadCharactersList(getPageNumber(charactersPages.next)));
+    nextButtonEL.addEventListener('click', () => loadCharactersList(getPageNumber(charactersPages.next)), null);
   } else {
     nextButtonEL.className = 'btn btn-disabled';
   }

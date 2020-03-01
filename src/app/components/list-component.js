@@ -2,15 +2,16 @@
 import * as loaderComponent from './loader-component';
 import intializePagerComponent from './pager-component';
 import initializeModalComponent from './modal-component';
+import initializeFilterComponent from './filter-component';
 // Application Services
-import * as apiHttpService from '../services/api-http-service';
+import getCharactersList from '../services/api-http-service';
 
 function createCharacterBasicInfo(character, extraInfo) {
   return `
     <img class="character-photo" src="${character.image}">
     <h3 class="character-name">${character.name}</h3>
     <div class="character-info-container">
-      <div class="character-info">Gender: ${character.name}</div>
+      <div class="character-info">Gender: ${character.gender}</div>
       <div class="character-info">Species: ${character.species}</div>
       <div class="character-info">Status: ${character.status}</div>
       ${extraInfo}
@@ -42,13 +43,14 @@ function createCharacterListTiles(charactersList) {
   }
 }
 
-function loadCharactersList(page) {
+function loadCharactersList(page, filters) {
   // Show a loader
   loaderComponent.init();
   // Get characters list
-  apiHttpService.getCharactersList(page).then((charactersListInfo) => {
-    console.log(charactersListInfo);
+  getCharactersList(page, filters).then((charactersListInfo) => {
+    // Scroll to top of the page
     window.scrollTo(0, 0);
+    // Create list with pager
     createCharacterListTiles(charactersListInfo.results);
     intializePagerComponent(charactersListInfo.info, loadCharactersList);
     // Remove loader
@@ -56,6 +58,7 @@ function loadCharactersList(page) {
   });
 }
 
-export default function initializeListComponent() {
-  loadCharactersList(1);
+export default function initializeListComponent(filters) {
+  loadCharactersList(1, filters);
+  initializeFilterComponent(loadCharactersList);
 }
