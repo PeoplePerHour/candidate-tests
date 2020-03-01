@@ -1,5 +1,6 @@
 // Application Components
 import * as loaderComponent from './loader-component';
+import intializePagerComponent from './pager-component';
 // Application Services
 import * as apiHttpService from '../services/api-http-service';
 
@@ -24,35 +25,6 @@ function createCharacterListTiles(charactersList) {
   }
 }
 
-
-function createListTilesPager(charactersPages) {
-  // Pager
-  const pagerEl = document.getElementsByTagName('pager')[0];
-  pagerEl.innerHTML = '';
-
-  // Pager buttons
-  const prevButtonEL = document.createElement('button');
-  prevButtonEL.textContent = 'PREVIOUS';
-  if (charactersPages.prev) {
-    prevButtonEL.className = 'btn';
-    prevButtonEL.addEventListener('click', () => loadCharactersList(charactersPages.prev.split('=').pop()));
-  } else {
-    prevButtonEL.className = 'btn btn-disabled';
-  }
-
-  const nextButtonEL = document.createElement('button');
-  nextButtonEL.textContent = 'NEXT';
-  if (charactersPages.next) {
-    nextButtonEL.className = 'btn';
-    nextButtonEL.addEventListener('click', () => loadCharactersList(charactersPages.next.split('=').pop()));
-  } else {
-    nextButtonEL.className = 'btn btn-disabled';
-  }
-
-  pagerEl.appendChild(prevButtonEL);
-  pagerEl.appendChild(nextButtonEL);
-}
-
 function loadCharactersList(page) {
   // Show a loader
   loaderComponent.init();
@@ -61,7 +33,7 @@ function loadCharactersList(page) {
     console.log(charactersListInfo);
     window.scrollTo(0, 0);
     createCharacterListTiles(charactersListInfo.results);
-    createListTilesPager(charactersListInfo.info);
+    intializePagerComponent(charactersListInfo.info, loadCharactersList);
     // Remove loader
     loaderComponent.destroy();
   });
