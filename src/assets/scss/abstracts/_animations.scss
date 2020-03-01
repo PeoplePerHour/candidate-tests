@@ -1,0 +1,44 @@
+// Animations
+
+// Rotate an element 360deg
+.rotate-me {
+	animation: rotating 1s linear infinite;
+}
+
+@keyframes rotating {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+// Shrink and grow
+@keyframes shrink-grow {
+	0% {
+		width: 50px;
+		height: 50px;
+	}
+
+	25% {
+		width: 35px;
+		height: 35px;
+	}
+
+	50% {
+		width: 20px;
+		height: 20px;
+	}
+
+	75% {
+		width: 35px;
+		height: 35px;
+	}
+
+	100% {
+		width: 50px;
+		height: 50px;
+	}
+}

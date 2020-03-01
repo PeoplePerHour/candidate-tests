@@ -1,0 +1,14 @@
+// Styles for commonly used HTML elements
+
+// Root elements
+html,
+body {
+	background: $theme-background;
+}
+
+app {
+	display: block;
+	margin: 0 auto;
+	padding: 0 $default-space;
+	overflow-x: hidden;
+}

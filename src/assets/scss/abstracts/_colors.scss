@@ -1,0 +1,22 @@
+// Colors
+
+// SCSS Color Variables | Named with this: http://chir.ag/projects/name-that-color
+// Color Palette: https://www.colourlovers.com/palette/3898849/RICK_AND_MORTY
+$pampas: #f8f6f3;
+$spicy-mix: #7d474b;
+$pacific-blue: #02afc5;
+$tacao: #f5a489;
+
+// Theme CSS Color Variables
+:root {
+	--theme-text: #{$spicy-mix};
+	--theme-background: #{$pampas};
+  --theme-error: #{$tacao};
+  --theme-main: #{$pacific-blue};
+}
+
+// Theme SCSS Color Variables
+$theme-text: var(--theme-text);
+$theme-background: var(--theme-background);
+$theme-error: var(--theme-error);
+$theme-main: Var(--theme-main);

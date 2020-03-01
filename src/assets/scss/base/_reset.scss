@@ -1,0 +1,13 @@
+// Reset and normalize styles
+
+// Root elements
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0;
+	height: 100%;
+}

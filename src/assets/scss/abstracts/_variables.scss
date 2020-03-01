@@ -1,0 +1,10 @@
+// SCSS Variables (except the color variables)
+
+// General
+$positions: top, right, bottom, left;
+$zindex: 2147483647;
+$default-space: 15px;
+
+// Header
+$header-height: 100px;
+$header-logo-height: #{$header-height - 2 * $default-space};

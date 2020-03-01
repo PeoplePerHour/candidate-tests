@@ -1,0 +1,10 @@
+// Typography rules
+
+// Root elements
+html,
+body {
+	font-family: 'Roboto', sans-serif;
+	color: $theme-text;
+	font-weight: 400;
+	font-size: 16px;
+}

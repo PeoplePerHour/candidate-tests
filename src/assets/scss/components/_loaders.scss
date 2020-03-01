@@ -1,0 +1,23 @@
+// Loaders
+
+// Content Blocking Loader
+#app_loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: $zindex;
+  background-color: rgba(255,255,255,0.5);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  &:before {
+    content: '';
+    display: block;
+    border: 5px solid $theme-main;
+    border-radius: 50%;
+    animation: shrink-grow .7s linear infinite;
+  }
+}
