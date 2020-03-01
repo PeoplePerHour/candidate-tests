@@ -1,7 +1,7 @@
 # Rick and Morty Character Listing
 
 ## Install
- + Run as admin in the folder that you want to contain the project `git clone https://github.com/georgeroubie/rick-and-morty-character-listing.git`.
+ + Download project from GitHub.
  + Open in the generated folder the terminal and run `npm install`.
 
 ## Run
