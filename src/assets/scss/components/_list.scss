@@ -1,14 +1,13 @@
 list {
   display: grid;
-  max-width: 1280px;
+  max-width: $container-max-width;
   grid-template-columns: 1fr;
   grid-gap: $default-space;
-  margin: 135px auto $default-space auto;
+  margin: #{$header-height + 15px} auto $default-space auto;
 
   @media screen and (min-width: 767px) {
     & {
       grid-template-columns: 1fr 1fr;
-      margin-top: 90px;
     }
   }
 
