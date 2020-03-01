@@ -6,6 +6,8 @@ $pampas: #f8f6f3;
 $spicy-mix: #7d474b;
 $pacific-blue: #02afc5;
 $tacao: #f5a489;
+$cream: #ffffcc;
+$white: #ffffff;
 
 // Theme CSS Color Variables
 :root {
@@ -20,3 +22,10 @@ $theme-text: var(--theme-text);
 $theme-background: var(--theme-background);
 $theme-error: var(--theme-error);
 $theme-main: Var(--theme-main);
+
+// Header
+$header-background-color: $cream;
+
+// List tile
+$list-tile-border-color: $pacific-blue;
+$list-tile-background-color: $white;

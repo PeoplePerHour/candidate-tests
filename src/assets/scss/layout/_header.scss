@@ -9,9 +9,9 @@
   z-index: 1000;
   height: $header-height;
   width: 100%;
-  background: $theme-background;
+  background: $header-background-color;
   padding: $default-space;
-  box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+  @include small-shadow();
 }
 
 .app-logo {

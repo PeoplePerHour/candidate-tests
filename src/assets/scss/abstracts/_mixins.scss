@@ -1,10 +1,10 @@
 // SCSS Mixins
 
-// Fonts
-@mixin font-style($size, $color, $weight: 400, $style: normal, $align: left) {
-	font-size: $size;
-	color: $color;
-	font-weight: $weight;
-	font-style: $style;
-	text-align: $align;
+// Shadows
+@mixin small-shadow() {
+  box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+}
+
+@mixin regular-shadow() {
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
 }

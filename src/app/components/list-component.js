@@ -10,9 +10,13 @@ function createCharacterListTiles(charactersList) {
     listTileEl.id = charactersList[i].id;
     listTileEl.className = 'list-tile';
     listTileEl.innerHTML = `
-      <img src="${charactersList[i].image}">
-      <div class="character-info">
+      <img class="character-photo" src="${charactersList[i].image}">
+      <div class="character-info-container">
         <h3 class="character-name">${charactersList[i].name}</h3>
+        <div class="character-info">Gender: ${charactersList[i].name}</div>
+        <div class="character-info">Species: ${charactersList[i].species}</div>
+        <div class="character-info">Status: ${charactersList[i].status}</div>
+        <div class="character-info">Origin: ${charactersList[i].origin.name}</div>
       </div>
     `;
     listEl.appendChild(listTileEl);

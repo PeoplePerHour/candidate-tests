@@ -1,11 +1,14 @@
 // SCSS Variables (except the color variables)
 
 // General
-$positions: top, right, bottom, left;
 $zindex: 2147483647;
 $default-space: 15px;
 $container-max-width: 1280px;
+$default-border-radius: 15px;
 
 // Header
-$header-height: 100px;
+$header-height: 90px;
 $header-logo-height: #{$header-height - 2 * $default-space};
+
+// List
+$list-tile-image-size: 250px;

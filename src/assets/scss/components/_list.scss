@@ -1,3 +1,4 @@
+// List tiles container
 list {
   display: grid;
   max-width: $container-max-width;
@@ -15,5 +16,26 @@ list {
     & {
       grid-template-columns: 1fr 1fr 1fr;
     }
+  }
+}
+
+// List tile
+.list-tile {
+  cursor: pointer;
+  text-align: center;
+  border: 3px solid $list-tile-border-color;
+  padding: $default-space;
+  border-radius: $default-border-radius;
+  background: $list-tile-background-color;
+  @include small-shadow();
+
+  .character-photo {
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+    width: $list-tile-image-size;
+    height: $list-tile-image-size;
+    object-fit: cover;
+    @include regular-shadow();
   }
 }
