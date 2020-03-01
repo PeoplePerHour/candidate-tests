@@ -7,6 +7,7 @@
   },
   "rules": {
     "no-plusplus": [2, { "allowForLoopAfterthoughts": true }],
+    "no-use-before-define": ["error", { "functions": false }],
     "linebreak-style": 0,
     "global-require": 0,
     "no-debugger": 0

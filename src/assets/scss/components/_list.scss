@@ -23,7 +23,7 @@ list {
 .list-tile {
   cursor: pointer;
   text-align: center;
-  border: 3px solid $list-tile-border-color;
+  border: $default-border-size solid $list-tile-border-color;
   padding: $default-space;
   border-radius: $default-border-radius;
   background: $list-tile-background-color;
