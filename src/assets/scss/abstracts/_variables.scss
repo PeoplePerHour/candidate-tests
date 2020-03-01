@@ -12,4 +12,8 @@ $header-height: 90px;
 $header-logo-height: #{$header-height - 2 * $default-space};
 
 // List
-$list-tile-image-size: 250px;
+$list-tile-image-size: 220px;
+
+// Modal
+$modal-head-height: 40px;
+$modal-max-width: 400px;

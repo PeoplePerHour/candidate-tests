@@ -1,0 +1,57 @@
+modal-backdrop {
+  position: fixed;
+  z-index: #{$zindex - 1};
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: $dark-backdrop-background-color;
+}
+
+modal {
+  position: fixed;
+  z-index: $zindex;
+  background: $modal-background-color;
+  max-width: $modal-max-width;
+  width: calc(100% - #{2 * $default-space});
+  display: flex;
+  flex-direction: column;
+  top: $default-space;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: $default-space;
+  border-radius: $default-border-radius;
+}
+
+.modal-head {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: $modal-head-height;
+
+  span {
+    font-size: 1.2rem;
+  }
+
+  button {
+    outline: 0;
+    border: 0;
+    height: 30px;
+    width: 30px;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+    font-size: 1.8rem;
+    line-height: 1.8rem;
+    font-weight: 700;
+    color: $modal-close-button-color;
+  }
+}
+
+.modal-body {
+  // This is not a magic are the spaces on top and bottom
+  // outside of modal and the space inside the modal
+  max-height: calc(100vh - #{$modal-head-height + (4 * $default-space)});
+  height: auto;
+  overflow-y: auto;
+}

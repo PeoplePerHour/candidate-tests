@@ -28,14 +28,28 @@ list {
   border-radius: $default-border-radius;
   background: $list-tile-background-color;
   @include small-shadow();
+}
 
-  .character-photo {
-    border-radius: 50%;
-    display: block;
-    margin: 0 auto;
-    width: $list-tile-image-size;
-    height: $list-tile-image-size;
-    object-fit: cover;
-    @include regular-shadow();
-  }
+.character-name {
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-align: center;
+  margin: 0 auto $default-space auto;
+}
+
+.character-info {
+  font-size: .9rem;
+  text-align: center;
+  margin-bottom: $default-space;
+}
+
+.character-photo {
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+  width: $list-tile-image-size;
+  height: $list-tile-image-size;
+  object-fit: cover;
+  margin-bottom: $default-space;
+  @include regular-shadow();
 }
