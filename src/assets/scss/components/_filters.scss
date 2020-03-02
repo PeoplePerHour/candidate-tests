@@ -38,6 +38,7 @@ filters {
     background: $filers-action-button-background-color;
     border-right: 1px solid $filters-border-color;
     cursor: pointer;
+    width: 40px;
 
     &:last-of-type {
       border-top-right-radius: $default-border-radius;
