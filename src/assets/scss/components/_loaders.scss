@@ -16,7 +16,7 @@
   &:before {
     content: '';
     display: block;
-    border: 5px solid $theme-main;
+    border: 5px solid $loader-color;
     border-radius: 50%;
     animation: shrink-grow .7s linear infinite;
   }

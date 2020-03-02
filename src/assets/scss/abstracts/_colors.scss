@@ -5,7 +5,6 @@
 $pampas: #f8f6f3;
 $spicy-mix: #7d474b;
 $pacific-blue: #02afc5;
-$tacao: #f5a489;
 $cream: #ffffcc;
 $white: #ffffff;
 
@@ -13,15 +12,11 @@ $white: #ffffff;
 :root {
 	--theme-text: #{$spicy-mix};
 	--theme-background: #{$pampas};
-  --theme-error: #{$tacao};
-  --theme-main: #{$pacific-blue};
 }
 
 // Theme SCSS Color Variables
 $theme-text: var(--theme-text);
 $theme-background: var(--theme-background);
-$theme-error: var(--theme-error);
-$theme-main: Var(--theme-main);
 
 // Backdrops
 $backdrop-background-color: rgba(255,255,255,.5);
@@ -33,6 +28,9 @@ $header-background-color: $cream;
 // List tile
 $list-tile-border-color: $pacific-blue;
 $list-tile-background-color: $white;
+
+// Loader
+$loader-color: $pacific-blue;
 
 // Button
 $button-background-color: $pacific-blue;

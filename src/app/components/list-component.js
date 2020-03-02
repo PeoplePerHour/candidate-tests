@@ -65,6 +65,7 @@ function loadCharactersList(page, filters) {
   }, () => {
     // Remove loader
     loaderComponent.destroy();
+    // Show user a message
     initializeModalComponent(`
       <h3>We are sorry :(</h3>
       <p>Something went wrong, please try again!</p>
