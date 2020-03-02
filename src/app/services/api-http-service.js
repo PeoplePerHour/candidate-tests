@@ -1,5 +1,5 @@
 // Application Constants
-import * as Constants from '../constants/constants';
+import * as constants from '../constants/constants';
 
 /* #region URL HEPLERS */
 function createUrl(apiEndpoint, apiAction, queryStrings) {
@@ -52,6 +52,9 @@ export default function getCharactersList(page, filters) {
   } else {
     queryStrings = createQueryParameters([{ page }]);
   }
-  const apiUrl = createUrl(Constants.API_ENDPOINT, 'character', queryStrings);
+  const apiUrl = createUrl(
+    constants.API_ENDPOINT,
+    constants.CHARACTER_LIST_API_ACTION, queryStrings,
+  );
   return apiHttpGet(apiUrl);
 }

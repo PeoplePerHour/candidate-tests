@@ -34,15 +34,15 @@ function createCharacterModalBody(character) {
 function createCharacterListTiles(charactersList) {
   const listEl = document.getElementsByTagName('list')[0];
   listEl.innerHTML = '';
-  for (let i = 0; i < charactersList.length; i++) {
+  charactersList.forEach((character) => {
     const listTileEl = document.createElement('div');
     listTileEl.className = 'list-tile';
-    listTileEl.innerHTML = createCharacterBasicInfo(charactersList[i], '');
+    listTileEl.innerHTML = createCharacterBasicInfo(character, '');
     listTileEl.addEventListener('click', () => {
-      initializeModalComponent(createCharacterModalBody(charactersList[i]));
+      initializeModalComponent(createCharacterModalBody(character));
     });
     listEl.appendChild(listTileEl);
-  }
+  });
 }
 /* #endregion */
 
