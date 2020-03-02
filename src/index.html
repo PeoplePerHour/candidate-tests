@@ -5,16 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title><%= htmlWebpackPlugin.options.title %></title>
+  <!-- FONTS-->
+	<script src="https://kit.fontawesome.com/be51949fff.js" crossorigin="anonymous" defer></script>
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
 </head>
 <body>
   <app>
     <header class="app-header center-flex">
-      <img
-        class="app-logo"
-        alt="Rick and Morty Logo"
-        onclick="window.location.href='/'"
-        src=<%=require("./assets/img/logo.svg")%>>
+      <a href="/">
+        <img
+          class="app-logo"
+          alt="Rick and Morty Logo"
+          src=<%=require("./assets/img/logo.svg")%>>
+      </a>
       <filters></filters>
     </header>
     <list></list>

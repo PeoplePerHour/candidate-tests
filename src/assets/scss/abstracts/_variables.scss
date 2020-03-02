@@ -9,11 +9,12 @@ $default-border-size: 3px;
 
 // Header
 $header-height: 90px;
+$header-height-mobile: 150px;
 $header-logo-height: #{$header-height - 2 * $default-space};
 
 // List
 $list-tile-image-size: 220px;
 
 // Modal
-$modal-head-height: 40px;
+$modal-head-height: 25px;
 $modal-max-width: 400px;

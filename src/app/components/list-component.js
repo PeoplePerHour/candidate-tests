@@ -62,6 +62,13 @@ function loadCharactersList(page, filters) {
     urlFiltersService.addFiltersToUrl(page, filters);
     // Remove loader
     loaderComponent.destroy();
+  }, () => {
+    // Remove loader
+    loaderComponent.destroy();
+    initializeModalComponent(`
+      <h3>We are sorry :(</h3>
+      <p>Something went wrong, please try again!</p>
+    `);
   });
 }
 /* #endregion */

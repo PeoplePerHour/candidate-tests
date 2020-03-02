@@ -20,7 +20,7 @@ export default function initializeModalComponent(modalBody) {
   modalHeadEl.className = 'modal-head';
 
   const modalCloseButton = document.createElement('button');
-  modalCloseButton.textContent = 'x';
+  modalCloseButton.innerHTML = '<i class="fas fa-times"></i>';
   modalCloseButton.addEventListener('click', () => destroyModalComponent());
 
   modalHeadEl.appendChild(modalCloseButton);

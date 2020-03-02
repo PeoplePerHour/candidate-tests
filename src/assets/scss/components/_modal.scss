@@ -54,4 +54,9 @@ modal {
   max-height: calc(100vh - #{$modal-head-height + (4 * $default-space)});
   height: auto;
   overflow-y: auto;
+  text-align: center;
+
+  h3 {
+    margin-top: 0;
+  }
 }

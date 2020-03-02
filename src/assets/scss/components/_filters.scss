@@ -3,22 +3,46 @@ filters {
   background-color: $filters-background-color;
   padding: #{$default-space / 2};
   border-radius: $default-border-radius;
+  margin: $default-space auto;
+
+  @media screen and (min-width: 767px) {
+    & {
+      margin: 0;
+    }
+  }
 
   select {
     border: 0;
     outline: 0;
     background: $filters-dropdown-background-color;
-    border-radius: $default-border-radius;
-    margin-right: #{$default-space / 2};
-    width: 90px;
+    width: 100px;
     text-align-last: center;
     color: $filters-dropdown-text-color;
+    border-right: 1px solid $filters-border-color;
     font-size: .9rem;
+    cursor: pointer;
+
+    &:first-of-type {
+      border-top-left-radius: $default-border-radius;
+      border-bottom-left-radius: $default-border-radius;
+    }
   }
 
   button {
     padding: #{$default-space / 2};
     border: 0;
     outline: 0;
+    font-size: 1rem;
+    line-height: 1rem;
+    color: $filers-action-button-text-color;
+    background: $filers-action-button-background-color;
+    border-right: 1px solid $filters-border-color;
+    cursor: pointer;
+
+    &:last-of-type {
+      border-top-right-radius: $default-border-radius;
+      border-bottom-right-radius: $default-border-radius;
+      border-right: 0;
+    }
   }
 }

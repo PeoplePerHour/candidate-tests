@@ -34,7 +34,7 @@ export default function initializeFilterComponent(filters, loadCharactersList) {
   createDropdownElement(statusDropdownEl, STATUS_DROPDOWN_ID, STATUS, filters, 'status');
 
   const searchButtonEl = document.createElement('button');
-  searchButtonEl.textContent = 'SEARCH';
+  searchButtonEl.innerHTML = '<i class="fas fa-search"></i>';
   searchButtonEl.addEventListener('click', () => {
     const selectedGender = document.getElementById(GENDER_DROPDOWN_ID).value;
     const selectedStatus = document.getElementById(STATUS_DROPDOWN_ID).value;
@@ -52,7 +52,7 @@ export default function initializeFilterComponent(filters, loadCharactersList) {
   });
 
   const clearButtonEl = document.createElement('button');
-  clearButtonEl.textContent = 'CLEAR';
+  clearButtonEl.innerHTML = '<i class="fas fa-times"></i>';
   clearButtonEl.addEventListener('click', () => {
     genderDropdownEl.value = '';
     statusDropdownEl.value = '';

@@ -7,13 +7,26 @@
   top: 0;
   left: 0;
   z-index: 1000;
-  height: $header-height;
+  height: $header-height-mobile;
   width: 100%;
   background: $header-background-color;
   padding: $default-space;
   @include small-shadow();
+
+  @media screen and (min-width: 767px) {
+    & {
+      height: $header-height;
+    }
+  }
 }
 
 .app-logo {
   height: $header-logo-height;
+  width: 100%;
+
+  @media screen and (min-width: 767px) {
+    & {
+      width: auto
+    }
+  }
 }
