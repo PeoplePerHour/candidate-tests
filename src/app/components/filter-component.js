@@ -51,7 +51,16 @@ export default function initializeFilterComponent(filters, loadCharactersList) {
     }
   });
 
+  const clearButtonEl = document.createElement('button');
+  clearButtonEl.textContent = 'CLEAR';
+  clearButtonEl.addEventListener('click', () => {
+    genderDropdownEl.value = '';
+    statusDropdownEl.value = '';
+    loadCharactersList(1, null);
+  });
+
   filterEl.appendChild(genderDropdownEl);
   filterEl.appendChild(statusDropdownEl);
   filterEl.appendChild(searchButtonEl);
+  filterEl.appendChild(clearButtonEl);
 }
