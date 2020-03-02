@@ -1,6 +1,7 @@
 // Application Components
 import initializeModalComponent from './modal-component';
 
+/* #region DROPDOWN FILTERS */
 // Pass dropdown element by reference
 function addOptionsToSelect(options, dropdownEl) {
   dropdownEl.appendChild(new Option(''));
@@ -9,7 +10,16 @@ function addOptionsToSelect(options, dropdownEl) {
   });
 }
 
-export default function initializeFilterComponent(loadCharactersList) {
+function createDropdownElement(dropdownEl, id, options, filters, filterProperty) {
+  dropdownEl.id = id;
+  addOptionsToSelect(options, dropdownEl);
+  if (filters && filters[filterProperty] && options.indexOf(filters[filterProperty]) !== -1) {
+    dropdownEl.value = filters[filterProperty];
+  }
+}
+/* #endregion */
+
+export default function initializeFilterComponent(filters, loadCharactersList) {
   const GENDERS = ['male', 'female', 'genderless', 'unknown'];
   const GENDER_DROPDOWN_ID = 'gender_fitler';
   const STATUS = ['alive', 'dead', 'unknown'];
@@ -18,12 +28,10 @@ export default function initializeFilterComponent(loadCharactersList) {
   const filterEl = document.getElementsByTagName('filters')[0];
 
   const genderDropdownEl = document.createElement('select');
-  genderDropdownEl.id = GENDER_DROPDOWN_ID;
-  addOptionsToSelect(GENDERS, genderDropdownEl);
+  createDropdownElement(genderDropdownEl, GENDER_DROPDOWN_ID, GENDERS, filters, 'gender');
 
   const statusDropdownEl = document.createElement('select');
-  statusDropdownEl.id = STATUS_DROPDOWN_ID;
-  addOptionsToSelect(STATUS, statusDropdownEl);
+  createDropdownElement(statusDropdownEl, STATUS_DROPDOWN_ID, STATUS, filters, 'status');
 
   const searchButtonEl = document.createElement('button');
   searchButtonEl.textContent = 'SEARCH';

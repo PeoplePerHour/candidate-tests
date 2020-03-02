@@ -4,4 +4,4 @@ import '../styles.scss';
 import initializeListComponent from './components/list-component';
 
 // Initialize application
-initializeListComponent(null);
+initializeListComponent();

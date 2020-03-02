@@ -1,10 +1,20 @@
-function getPageNumber(pagerUrl) {
-  try {
-    return Number(pagerUrl.split('=').pop());
-  } catch (ex) {
-    // In case that a number is not retreived for some
-    // unexpected return to first page
-    return 1;
+// Application Services
+import * as urlFiltersService from '../services/url-filters-service';
+
+// Pass button element by reference
+function createPagerButton(loadCharactersList, buttonEl, buttonUrl, type) {
+  buttonEl.textContent = type === 'prev' ? 'PREVIOUS' : 'NEXT';
+  if (buttonUrl) {
+    buttonEl.className = 'btn';
+    buttonEl.addEventListener('click', () => {
+      loadCharactersList(
+        Number(urlFiltersService.getFiltersFromUrl()[0])
+        + (type === 'prev' ? -1 : +1),
+        urlFiltersService.getFiltersFromUrl()[1],
+      );
+    });
+  } else {
+    buttonEl.className = 'btn btn-disabled';
   }
 }
 
@@ -15,23 +25,11 @@ export default function intializePagerComponent(charactersPages, loadCharactersL
 
   // Previous button
   const prevButtonEL = document.createElement('button');
-  prevButtonEL.textContent = 'PREVIOUS';
-  if (charactersPages.prev) {
-    prevButtonEL.className = 'btn';
-    prevButtonEL.addEventListener('click', () => loadCharactersList(getPageNumber(charactersPages.prev)), null);
-  } else {
-    prevButtonEL.className = 'btn btn-disabled';
-  }
+  createPagerButton(loadCharactersList, prevButtonEL, charactersPages.prev, 'prev');
 
   // Next button
   const nextButtonEL = document.createElement('button');
-  nextButtonEL.textContent = 'NEXT';
-  if (charactersPages.next) {
-    nextButtonEL.className = 'btn';
-    nextButtonEL.addEventListener('click', () => loadCharactersList(getPageNumber(charactersPages.next)), null);
-  } else {
-    nextButtonEL.className = 'btn btn-disabled';
-  }
+  createPagerButton(loadCharactersList, nextButtonEL, charactersPages.next, 'next');
 
   // Add them to pager
   pagerEl.appendChild(prevButtonEL);

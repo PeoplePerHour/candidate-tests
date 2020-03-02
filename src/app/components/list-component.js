@@ -5,7 +5,9 @@ import initializeModalComponent from './modal-component';
 import initializeFilterComponent from './filter-component';
 // Application Services
 import getCharactersList from '../services/api-http-service';
+import * as urlFiltersService from '../services/url-filters-service';
 
+/* #region LIST TILES */
 function createCharacterBasicInfo(character, extraInfo) {
   return `
     <img class="character-photo" src="${character.image}">
@@ -42,7 +44,9 @@ function createCharacterListTiles(charactersList) {
     listEl.appendChild(listTileEl);
   }
 }
+/* #endregion */
 
+/* #region LOAD LIST */
 function loadCharactersList(page, filters) {
   // Show a loader
   loaderComponent.init();
@@ -53,12 +57,17 @@ function loadCharactersList(page, filters) {
     // Create list with pager
     createCharacterListTiles(charactersListInfo.results);
     intializePagerComponent(charactersListInfo.info, loadCharactersList);
+    // Add filter to url in order to user to see
+    // the same list items when hits refresh
+    urlFiltersService.addFiltersToUrl(page, filters);
     // Remove loader
     loaderComponent.destroy();
   });
 }
+/* #endregion */
 
-export default function initializeListComponent(filters) {
-  loadCharactersList(1, filters);
-  initializeFilterComponent(loadCharactersList);
+export default function initializeListComponent() {
+  const userFilters = urlFiltersService.getFiltersFromUrl();
+  loadCharactersList(userFilters[0], userFilters[1]);
+  initializeFilterComponent(userFilters[1], loadCharactersList);
 }
