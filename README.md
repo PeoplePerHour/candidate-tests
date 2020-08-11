@@ -1,42 +1,35 @@
-# Candidate tests
-- [Frontend test project](README-FRONTEND.md)
-- [Backend test project](README-BACKEND.md)
-- [Backend API test](README-BE-WEATHER.md)
 
-### Process
+## John Soukas Rick and Morty Characters explorer
 
-Fork this repo, and clone it on your local environment <br />
-`git clone git@github.com:<your-github-username>/candidate-tests.git`
-<br />
-<br />
-Enter the created folder<br />
-`cd ./candidate-tests`
-<br />
-<br />
-Create a branch named after your fullname <br/>
-`git checkout -b yourfullname`
-<br />
-<br />
-When you are done please commit your code and push your branch
-<br />
-```
-git add . 
-git commit -m 'Enter your commit comment here'
-git push origin yourfullname
-```
-<br />
-<br />
-And then create a pull request from your repository `<your-github-username>/candidate-tests` branch to `PeoplePerHour/candidate-tests/master` branch.
-<br />
-Just don't forget to send us a message that you have committed your code.
+This is a project bootstraped by create-react-app and then ejected. In the project directory, you can run:
 
-### Things to avoid
-- Long PRs, code must be as simpler as it could be.
-- Over-complicated
-- Over-engineered
-- Copy-pasting code from other libraries, without fully understanding what it does.
-- Not asking for clarification. If something is unclear please go ahead and ask us.
+### `yarn start`
 
-**Important Note**: If you need any clarification, please create a new issue and we will respond asap.
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## Do your magic!
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
+
+### `yarn test`
+
+Launches the test runner in the interactive watch mode.<br />
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `yarn build`
+
+Builds the app for production to the `build` folder.<br />
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.<br />
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `yarn lint`
+
+Lints the project
+
+### `yarn lint:fix`
+
+Lints the project and auto-fixes the lint errors.

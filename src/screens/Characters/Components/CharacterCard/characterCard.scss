@@ -1,0 +1,158 @@
+@import '../../../../shared/mixins';
+
+$card-radius: 3px;
+$status-color: (
+  'dead': #bc2f2f,
+  'alive': #159d15,
+  'unknown': #404040
+);
+
+.scene {
+  width: 50%;
+  height: 230px;
+  margin: 5px 0;
+  padding: 5px;
+  perspective: 600px;
+  @include mq(sm) {
+    width: 33.3%;
+    height: 260px;
+    margin: 10px 0;
+    padding: 5px;
+  }
+  @include mq(md) {
+    width: 25%;
+    height: 260px;
+  }
+  @include mq(lg) {
+    width: 20%;
+    height: 260px;
+  }
+  @include mq(xl) {
+    width: 16.6%;
+    height: 260px;
+  }
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  position: relative;
+
+  &.is-flipped {
+    transform: rotateY(180deg);
+  }
+
+  &__avatar {
+    width: 100%;
+    height: 80%;
+    min-height: 150px;
+    object-fit: cover;
+    background: gray;
+    border-top-right-radius: $card-radius;
+    border-top-left-radius: $card-radius;
+  }
+
+  &__name {
+    font-size: 15px;
+    width: 100%;
+    color: #060c11;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+  }
+  &__status {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 10px;
+    padding: 5px;
+    background: map-get($status-color, unknown);
+    border-radius: $card-radius;
+    &--alive {
+      background: map-get($status-color, alive);
+    }
+    &--dead {
+      background: map-get($status-color, dead);
+    }
+  }
+  &__meta {
+    color: #3e5160;
+    font-size: 10px;
+    width: 100%;
+    display: flex;
+    background: white;
+    bottom: calc(100% - 10px);
+    position: absolute;
+    padding: 10px 10px 0 10px;
+  }
+  &__info {
+    font-size: 9px;
+    padding: 5px;
+    line-height: 1.5;
+    max-width: 100%;
+    width: 100%;
+    display: block;
+    &:not(:last-child) {
+      border-bottom: 1px solid #eee;
+    }
+    > label {
+      color: black;
+      font-size: 8px;
+    }
+    > span {
+      color: #8b3f3f;
+      display: block;
+      word-wrap: break-word;
+      margin-bottom: 5px;
+    }
+  }
+  &__face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    box-shadow: 0 1px 2px #cccccc;
+    border-radius: $card-radius;
+
+    &--front {
+      background: white;
+      transition: all .2s ease;
+      z-index: -1;
+      &:hover {
+        transform: scale(1.02);
+      }
+      > div {
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 18%;
+        position: relative;
+      }
+    }
+
+    &--back {
+      background: white;
+      transform: rotateY(180deg);
+      text-align: left;
+      justify-content: flex-start;
+      align-items: flex-start;
+      overflow: scroll;
+    }
+  }
+}

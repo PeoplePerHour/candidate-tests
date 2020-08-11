@@ -1,0 +1,127 @@
+@import '../../shared/mixins';
+$container-width: 1200px;
+$input-height: 30px;
+$input-radius: 3px;
+$input-color: #3a85d3;
+
+
+%flex-center-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.container {
+  max-width: $container-width;
+  margin: 0 auto;
+  padding: 15px;
+}
+
+.characters {
+  &-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 100px;
+    @include mq(xs) {
+      margin-top: 50px;
+    }
+    &.loading {
+      opacity: .7;
+    }
+  }
+}
+
+.error {
+  display: block;
+  text-align: center;
+}
+
+.pagination {
+  @extend %flex-center-between;
+  text-align: center;
+  width: 100%;
+  margin: 15px 0 0 0;
+  justify-content: center;
+  @include mq(xs) {
+    margin: 0;
+    width: auto;
+    justify-content: flex-start;
+  }
+  span {
+    padding: 5px;
+    font-size: 14px;
+    color: #333;
+  }
+}
+
+.filters {
+  position: fixed;
+  z-index: 99;
+  left: 50%;
+  top: 0;
+  background:white;
+  transform: translateX(-50%);
+  width: 100%;
+  white-space: nowrap;
+  &__inner {
+    @extend %flex-center-between;
+    flex-wrap: wrap;
+    > div {
+      @extend %flex-center-between;
+      justify-content: center;
+      width: 100%;
+      @include mq(xs) {
+        width: auto;
+        justify-content: flex-start;
+      }
+    }
+  }
+  input, select {
+    height: $input-height;
+    border: 0;
+    outline: 0;
+    border-radius: $input-radius;
+    margin: 0 5px 0 0;
+    padding: 0 5px;
+    @extend %flex-center-between;
+    justify-content: center;
+    border: 1px solid #eee;
+    transition: .1s ease;
+    &:focus, &:active {
+      border-color: $input-color;
+    }
+  }
+  button, a {
+    margin: 0 3px;
+    height: $input-height;
+    @extend %flex-center-between;
+    justify-content: center;
+    outline: 0;
+    font-size: 11px;
+    padding: 10px;
+    border: 0;
+    border-radius: $input-radius;
+    background: $input-color;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    &:hover {
+      filter: brightness(1.1);
+    }
+    &:active {
+      filter: brightness(.9);
+    }
+  }
+  a {
+    text-decoration: none;
+    background: transparent;
+    color: $input-color;
+    border: 1px solid;
+    margin: 0 10px 0 0;
+    display: none;
+    @include mq(xs) {
+      margin: 0 30px 0 0;
+      display: flex;
+    }
+  }
+}

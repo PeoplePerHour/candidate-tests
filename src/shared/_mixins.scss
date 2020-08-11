@@ -1,0 +1,25 @@
+
+@mixin mq($breakpoint) {
+
+  $mq-xs: "(min-width: 575px)";
+  $mq-sm: "(min-width: 576px) and (max-width: 767px)";
+  $mq-md: "(min-width: 768px) and (max-width: 991px)";
+  $mq-lg: "(min-width: 992px) and (max-width: 1199px)";
+  $mq-xl: "(min-width: 1200px)";
+
+  @if $breakpoint == xs {
+      @media #{$mq-xs} { @content; }
+  }
+  @else if $breakpoint == sm {
+      @media #{$mq-sm} { @content; }
+  }
+  @else if $breakpoint == md {
+      @media #{$mq-md} { @content; }
+  }
+  @else if $breakpoint == lg {
+      @media #{$mq-lg} { @content; }
+  }
+  @else if $breakpoint == xl { 
+      @media #{$mq-xl} { @content; }
+  }
+}

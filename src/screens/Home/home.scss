@@ -1,0 +1,40 @@
+@import '../../shared/mixins';
+
+.home {
+  position: relative;
+  background: radial-gradient(#138c44, transparent);
+  min-height: 100vh;
+  a {
+    position: fixed;
+    top: 45%;
+    left: 51%;
+    transform: translate(-50%, -50%);
+    text-decoration: none;
+    background: #d3e154;
+    color: #04444f;
+    box-shadow: 0 1px 2px #404040;
+    border-radius: 3px;
+    font-weight: bold;
+    padding: 15px;
+    z-index: 1;
+    transition: all .15s ease;
+    white-space: nowrap;
+    @include mq(xs) {
+      top: 50%;
+    }
+    &:hover {
+      top: 49.7%;
+      filter: brightness(1.1);
+    }
+  }
+  img {
+    position: fixed;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 260px;
+    @include mq(xs) {
+      width: 400px;
+    }
+  }
+}
