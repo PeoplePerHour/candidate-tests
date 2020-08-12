@@ -21,14 +21,22 @@ export function urlParamsToObject(paramsStr) {
 
 export function serializeParamsObject(paramsObject) {
   let str = ""
-  Object.keys(paramsObject).forEach((key) => {
-    if (str !== "") {
-      str += "&"
-    }
-    if (paramsObject[key].replace(/ /g, "")) {
-      str += `${key}=${paramsObject[key]}`
-    }
+
+  const sanitizedKeys = Object.keys(paramsObject).filter((key) => {
+    const striped = paramsObject[key].replace(/ /g, "")
+    return striped !== ""
   })
+
+  if (sanitizedKeys.length) {
+    sanitizedKeys.forEach((key) => {
+      if (str !== "") {
+        str += "&"
+      }
+      if (paramsObject[key]) {
+        str += `${key}=${paramsObject[key]}`
+      }
+    })
+  }
 
   return str
 }

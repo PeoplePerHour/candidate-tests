@@ -50,6 +50,7 @@ function charsReducer(state = initialState, action) {
         ...state,
         chars,
         info,
+        error: null,
         loading: false,
       }
     case FETCH_CHARS_ERROR:
