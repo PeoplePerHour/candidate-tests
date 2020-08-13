@@ -1,0 +1,124 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+body {
+  background: linear-gradient(0.25turn, #51a63f, #99d968, #328c25);
+}
+
+.card {
+  height: 95% !important;
+  color: rgb(255, 255, 255);
+  background: rgb(125, 18, 255) none repeat scroll 0% 0% !important;
+  border: 4px solid rgb(171, 32, 253) !important;
+  box-shadow: rgb(171, 32, 253) 0px 10px 25px;
+  &-body {
+    text-align: center;
+  }
+  &-header {
+    background: black !important ;
+    text-align: center;
+  }
+
+  &:hover {
+    transform: scale(1.10);
+                
+    }
+}
+
+
+.btn {
+    margin: 15px;
+    box-shadow: #20defd 0px 1px 25px;
+}
+
+h1 {
+  font-size: 4em;
+  -webkit-text-stroke: 1px rgb(245, 245, 245);
+}
+
+.char_span {
+  color: #28ff5d;
+  border-radius: 3px;
+  padding: 0px 6px;
+  border: beige;
+  background: rgba(33, 216, 255, 0.8) none repeat scroll 0% 0%;
+}
+
+.loader {
+  animation: spin 1s infinite ease-in-out;
+  border-radius: 50%;
+  border-top: 2px solid #fff;
+  display: inline-block;
+  height: 2em;
+  margin: calc(50vh - 1em) calc(50vw - 1em);
+  width: 2em;
+}
+.episode {
+
+	color: #28ff5d;
+	padding: 0px 8px;
+}
+
+p {
+  white-space: pre-line;
+}
+
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
