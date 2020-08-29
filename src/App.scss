@@ -1,0 +1,130 @@
+.card-container{ 
+  box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+  transition: 0.3s ; 
+  transition: 0.3s;
+  background: #fff;
+  border-radius: 5px;
+  margin-bottom: 24px;
+  }
+  .img-responsive{
+    border-radius: 5px 5px 0 0;
+  }
+  .card-container:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+
+.nav-container{
+display :flex;
+}
+
+a {
+  &:hover{text-decoration: none}
+}
+
+.nav-logo{
+height: 120px;
+margin-left: 22px;
+}
+
+.navbar-header{
+  font-size: 2.2em;
+    margin-left: 30px;
+    margin-top: 33px;
+    display: flex;
+    align-items:center;
+}
+.form-container{
+  
+  border: solid 1px darkslategray;
+  border-radius: 50px 20px;
+  background-color: darkcyan;
+}
+.form-row{
+  display: flex;
+  justify-content: space-around;
+}
+.footer{
+  padding-right: 0px;
+}
+.copyright{
+  padding-top: 10px;
+}
+.title{
+  text-align:center
+}
+.search-symbol{
+  margin-right:15px;
+}
+
+.search-button{
+  width: 150px;
+  border-color: black;
+  background-color: black;
+  color: white;
+  &:hover{
+    color: white;
+    background-color: black;
+  }
+  &:active{
+    color: white;
+    background-color: black;
+   
+  }
+}
+.pagination-container{
+  display: flex;
+  justify-content: center;
+}
+
+.pagination{ 
+  width: 200px;
+  display: flex;
+  justify-content: space-around;
+
+  .pagination-button{
+    border-color: black;
+    
+    &:hover {
+      color: black;
+    }
+   &:focus {
+     border-color:black !important;
+   }
+  }
+}
+
+.card-description{
+  padding: 20px;
+  p{
+    margin-bottom: 2px;
+  }
+}
+
+.card-title{ 
+  text-align: center;
+  padding: 0px 4px;
+}
+
+@media screen and (max-width: 768px) {
+  #searchForm {
+    justify-content: center;
+    .btn{
+      margin: 14px;
+      width: 100%;
+    }
+
+    
+  }
+  .navbar-header{ 
+    flex-direction: column;
+  }
+}
+
+.header-title{ 
+  text-decoration: none; color: white; text-align:center;
+  &:hover{ color: white; text-decoration: none;}
+}
+
+.fa-search{
+  margin-right: 8px;
+}
