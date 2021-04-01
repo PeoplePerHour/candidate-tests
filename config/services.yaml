@@ -1,0 +1,76 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    wheatherApi:
+        defaultProvider: 'weatherbit'
+        providers:
+            openweathermap:
+                # Free API forcast for next day could be obtained only through latitude and longitude
+                # latLonPrecall is needed for to fetch latitude and longitude by a city (town, place) name
+                latLonPrecall:
+                    uri: 'http://api.openweathermap.org/geo/1.0/direct'
+                    query:
+                        limit: 1
+                        appid: '00126963b4d58070c7ea337693095e28'
+                    locationName: 'q'
+                    extractData:
+                        lat: '0::lat'
+                        lon: '0::lon'
+                uri: 'https://api.openweathermap.org/data/2.5/onecall'
+                query:
+                    exclude: 'current,hourly,minutely,alerts'
+                    appid: '00126963b4d58070c7ea337693095e28'
+                locationName: ''
+                tempUnitName: 'units'
+                allTempUnits:
+                    cel: 'metric'
+                    fahr: 'imperial'
+                extractData:
+                    dataTempMax: 'daily::1::temp::max'
+                    dataTempMin: 'daily::1::temp::min'
+                    dataDescription: 'daily::1::weather::0::description'
+            weatherbit:
+                uri: 'https://api.weatherbit.io/v2.0/forecast/daily'
+                query:
+                    days: 2
+                    key: 'a742c8e824274bb0a2dcc2abb39a1797'
+                locationName: 'city'
+                tempUnitName: 'units'
+                allTempUnits:
+                    cel: 'M'
+                    fahr: 'I'
+                extractData:
+                    dataTempMax: 'data::1::max_temp'
+                    dataTempMin: 'data::1::min_temp'
+                    dataDescription: 'data::1::weather::description'
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+            - '../src/Tests/'
+
+    # controllers are imported separately to make sure services can be injected
+    # as action arguments even if you don't extend any base controller class
+    App\Controller\:
+        resource: '../src/Controller/'
+        tags: ['controller.service_arguments']
+
+    # add more service definitions when explicit configuration is needed
+    # please note that last definitions always *replace* previous ones
+    App\Service\ForecastService:
+        arguments:
+            $params: '%wheatherApi%'
+            $httpClient: '@Symfony\Contracts\HttpClient\HttpClientInterface'

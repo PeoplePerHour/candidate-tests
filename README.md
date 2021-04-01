@@ -1,42 +1,11 @@
-# Candidate tests
-- [Frontend test project](README-FRONTEND.md)
-- [Backend test project](README-BACKEND.md)
-- [Backend API test](README-BE-WEATHER.md)
+Test for PPH
 
-### Process
+Stack: PHP 8.0 or PHP 7.4, Apache2 or Ngnix (Alpine).
 
-Fork this repo, and clone it on your local environment <br />
-`git clone git@github.com:<your-github-username>/candidate-tests.git`
-<br />
-<br />
-Enter the created folder<br />
-`cd ./candidate-tests`
-<br />
-<br />
-Create a branch named after your fullname <br/>
-`git checkout -b yourfullname`
-<br />
-<br />
-When you are done please commit your code and push your branch
-<br />
-```
-git add . 
-git commit -m 'Enter your commit comment here'
-git push origin yourfullname
-```
-<br />
-<br />
-And then create a pull request from your repository `<your-github-username>/candidate-tests` branch to `PeoplePerHour/candidate-tests/master` branch.
-<br />
-Just don't forget to send us a message that you have committed your code.
+Start with docker: docker-compose up or docker-compose up -d
 
-### Things to avoid
-- Long PRs, code must be as simpler as it could be.
-- Over-complicated
-- Over-engineered
-- Copy-pasting code from other libraries, without fully understanding what it does.
-- Not asking for clarification. If something is unclear please go ahead and ask us.
+Must be pre-installed: mbstring, xml, curl extentions.
 
-**Important Note**: If you need any clarification, please create a new issue and we will respond asap.
+Example of request: your_server_address/fcnextday?location=London,GB&tempUnit=cel&provider=openweathermap
 
-## Do your magic!
+For running tests: ./bin/phpunit
