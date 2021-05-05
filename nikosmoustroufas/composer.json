@@ -1,0 +1,38 @@
+{
+    "name": "BackEnd Test Assignment",
+    
+    "description": "PeoplePerHour Backend Weather Test Assignment",
+    
+    "type": "project",
+    
+    "version": "1.0.0",
+    
+    "authors": [{
+        "name": "Working Class Code (Nikos Moustroufas)",
+        "email": "workingclasscode@gmail.com",
+        "homepage": "https://foo123.github.io"
+    }],
+    
+    "autoload": {
+        "classmap": [
+            "lib/"
+        ],
+        "psr-4": {
+            "App\\Test\\": "test/",
+            "App\\": "app/"
+        }
+    },
+    "require": {
+        "guzzlehttp/guzzle": "^6.5",
+        "monolog/monolog": "^2.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.5",
+        "opsway/psr12-strict-coding-standard": "^0.3.0"
+    },
+    "scripts": {
+      "test": "phpunit",
+      "cs-check": "phpcs",
+      "cs-fix": "phpcbf"
+    }
+}

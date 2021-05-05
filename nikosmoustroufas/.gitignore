@@ -1,0 +1,5 @@
+vendor/
+var/cache/weather_*
+composer.lock
+.phpunit.result.cache
+.phpcs-cache
