@@ -8,7 +8,6 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Exception\ClientException;
 
 /** Weatherbit
- * 
  * This is a custom small library (class) that will be used in order to talk with WeatherBit rest api.
  * It is a small implementation just for the sake of the test.
  */
@@ -30,18 +29,18 @@ class Weatherbit
         $request = null;
         try {
             $request = $client->request('GET', $this->service_url . $service, ['query' => $params]);
-        } catch(RequestException $e) {
+        } catch (RequestException $e) {
             $data['data']['status_message'] = 'Weatherbit request was unsuccessful. Please contact our administrators.';
             $data['data']['status_code'] = $e->getCode();
             Log::error("[WEATHERBIT][REQUEST EXCEPTION]: " . $e->getCode() . $e->getMessage());
             return $data;
-        } catch(ClientException $e) {
+        } catch (ClientException $e) {
             $data['data']['status_message'] = 'Weatherbit request was unsuccessful. Please contact our administrators.';
             $data['data']['status_code'] = $e->getCode();
             Log::error("[WEATHERBIT][CLIENT EXCEPTION]: " . $e->getCode() . $e->getMessage());
             return $data;
-        } catch(\Exception $e) {
-            $data['data']['status_message'] = 'There was an issue talking with weatherbit. Please contact our administrators.';
+        } catch (\Exception $e) {
+            $data['data']['status_message'] = 'Weatherbit request was unsuccessful. Please contact our administrators.';
             $data['data']['status_code'] = $e->getCode();
             Log::error("[WEATHERBIT][EXCEPTION]: " . $e->getCode() . $e->getMessage());
             return $data;

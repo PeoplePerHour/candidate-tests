@@ -1,5 +1,5 @@
 # Candidate tests
-## Do my magic?
+## Do my magic?gi
 
 -----------------------------------------------
 
@@ -27,7 +27,7 @@ A little bit about the demo app and what i took into consideration:
 1. My app, is based on lumen framework. A simple and lightweight PHP framework, building small services and apis.
 2. This API, doesn't incorporate all the features of a complete API (such as universal response classes, deep linking etc). It has all it needs, for a mock start API service in a demo-test environment.
 3. It is fault-tolerant in mind.
-4. It follows the PSR-12 specs.
+4. It follows the PSR-12 specs (except test case class - missing namespace declarations)
 5. It caches responses on a hourly basis
 6. It has a typical logging when needed to monitor the api requests (both succesful and those with service warnings)
 

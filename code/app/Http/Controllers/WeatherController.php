@@ -5,13 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use App\Libraries\Weatherbit;
+
 /** WeatherController
  * A simple endpoint, to serve a response for current weather conditions and temperature for a specified location.
  * Location can be a combination of lat and lon / or a city name.
- * 
- * User may pass any number of extra arguments, identical to the weatherbit service such as units and lang, 
+ * User may pass any number of extra arguments, identical to the weatherbit service such as units and lang,
  * in order to get a localized response.
- * 
  * Requests query combinations, are being cached for an hour to save service quotas and serve faster responses.
  */
 class WeatherController extends Controller
@@ -48,15 +47,15 @@ class WeatherController extends Controller
             $service_parameters['units'] = $request->input('units');
         }
         // Keep our results in memory for at least an hour to save some service quotas
-        // service parameters, are being built above with a custom order, 
+        // service parameters, are being built above with a custom order,
         // considering our key valid in this case.
-        $cache_key = implode('-',$service_parameters);
+        $cache_key = implode('-', $service_parameters);
         // Check key exists
         if (!Cache::has($cache_key)) {
             // no key on store, call our service.
             $resp = $weatherbit->call('current', $service_parameters);
             // and then save for later usage for 1 hour
-            if($resp['cache'] === true) {
+            if ($resp['cache'] === true) {
                 Cache::put($cache_key, $resp['data'], 3600);
             } else {
                 return response()->json($resp['data']);
