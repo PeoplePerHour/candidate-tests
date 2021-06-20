@@ -1,0 +1,1 @@
+docker build -t kvailas/pph-be-test .
