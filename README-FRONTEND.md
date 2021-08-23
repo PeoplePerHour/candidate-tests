@@ -6,6 +6,9 @@ Using this api: https://rickandmortyapi.com/documentation Create a single-page a
 ReactJS is highly recommended for the view layer. 
 Display the information however you like. Don't be afraid to use beautiful colors and a tidy layout. Be creative.  
 
+## For Fullstack developers
+Instead of using the api , create your own api (only the characters endpoint with pagination and filtering) in whatever framework you want (or core PHP) using the data from this json file [ricknmorty.json.zip](https://github.com/PeoplePerHour/candidate-tests/files/7030686/ricknmorty.json.zip)
+
 ## Required Features:
 - Listing of all Rick & Morty show characters limited to 20 items per page.
 - Simple "Previous" and "Next" buttons for pagination.
@@ -30,3 +33,4 @@ Use these coding standards: https://github.com/airbnb/javascript
 - Use Redux store
 - Simple assertion tests
 - Make the layout responsive
+- (For fullstack devs) dockerize the app 
