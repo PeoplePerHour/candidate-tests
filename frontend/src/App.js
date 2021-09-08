@@ -30,10 +30,10 @@ function App() {
     window.clearTimeout(window.timeout);
     
     window.timeout = setTimeout(() => {
-      const params = new URLSearchParams(window.location.search);
+      // const params = new URLSearchParams(window.location.search);
 
-      params.set("name", e.target.value);
-      window.location.search = params;
+      // params.set("name", e.target.value);
+      // window.location.search = params;
 
       setName(e.target.value);
     }, 200);
@@ -66,10 +66,6 @@ function App() {
 
         setList(out);
         setMaxPage(res.to === res.total);
-      })
-      .catch((e) => {
-        console.log(e);
-        alert("An error occurred while fetching data");
       })
       .finally(() => {
         setLoading(false);
