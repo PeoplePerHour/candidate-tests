@@ -1,0 +1,37 @@
+.character {
+  box-sizing: border-box;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid black;
+}
+
+.mt-20 {
+  margin-top: 20px
+}
+
+.character h2 {
+  margin-bottom: 30px;
+}
+
+.character .information-block {
+  margin-top: 20px;
+}
+
+.filters {
+  height: 80px;
+  line-height: 80px;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  padding:  20px;
+  box-sizing: border-box;
+}
+
+.grow {
+  flex-grow: 1;
+}
